@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>4Q Mirror Playlab – 2小时免费说明会 | 0–6岁父母 · ZOOM</title>
+    <meta
+      name="description"
+      content="4Q Playlab 2.5小时免费说明会，专为0-6岁父母设计。探索脑科学育儿，提升亲子沟通力，报名即加入WhatsApp家长社群。线上ZOOM直播，名额有限，立即预约！"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="google-site-verification"
+      content="cwhRpNH2oKZP4aBB7zr2y-Ps-ev69SnzIa-cy7Ai6qg"
+    />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="//unpkg.com" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN (deferred for performance) -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+      /* Optional: smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Prevent horizontal scroll on mobile */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+      /* Basic card style helper (Tailwind @apply doesn't work without build; use plain CSS) */
+      .card {
+        background-color: #ffffff;
+        border-radius: 1rem; /* rounded-2xl */
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
+        border: 1px solid rgb(243 244 246); /* gray-100 */
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      /* Soft shadow utility used in a few places */
+      .soft-shadow {
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08),
+          0 8px 10px -6px rgb(0 0 0 / 0.06);
+      }
+      /* Section padding helper used once */
+      .section-pad {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      /* Anchor offset for sticky header */
+      #registration-form {
+        scroll-margin-top: 96px;
+      }
+      /* Font smoothing for crisper text */
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+      /* Respect users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+      /* Hero polish */
+      @keyframes blob {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(10px, -12px) scale(1.05);
+        }
+      }
+      .animate-blob {
+        animation: blob 18s ease-in-out infinite;
+      }
+      .animate-blob-delayed {
+        animation-delay: 6s;
+      }
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .tilt {
+        will-change: transform;
+        transform-style: preserve-3d;
+        transition: transform 0.15s ease;
+      }
+      .btn-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-shine::after {
+        content: "";
+        position: absolute;
+        top: -150%;
+        left: -50%;
+        width: 50%;
+        height: 400%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.35),
+          rgba(255, 255, 255, 0)
+        );
+        transform: translateX(-120%) rotate(25deg);
+        transition: transform 0.8s ease;
+      }
+      .btn-shine:hover::after {
+        transform: translateX(220%) rotate(25deg);
+      }
+      /* Auto-run sheen for CTA when entering viewport */
+      @keyframes shineOnce {
+        from {
+          transform: translateX(-120%) rotate(25deg);
+        }
+        to {
+          transform: translateX(220%) rotate(25deg);
+        }
+      }
+      .btn-shine.run-sheen::after {
+        animation: shineOnce 0.9s ease forwards;
+      }
+      /* Sheen effect for hero chips */
+      .sheen {
+        position: relative;
+        overflow: hidden;
+      }
+      .sheen::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.55),
+          rgba(255, 255, 255, 0)
+        );
+        filter: blur(2px);
+        pointer-events: none;
+      }
+      @keyframes sheenMove {
+        0% {
+          left: -150%;
+        }
+        100% {
+          left: 150%;
+        }
+      }
+      .sheen-run::before {
+        animation: sheenMove 2.2s ease-in-out forwards;
+        animation-delay: var(--sheen-delay, 0s);
+      }
+      .sheen:hover::before {
+        animation: sheenMove 1.2s ease-in-out;
+      }
+
+      /* Caret blink for typed headline */
+      @keyframes caretBlink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
+      .animate-caret {
+        /* Calmer caret: keep steady (no blinking) for readability */
+        animation: none;
+        opacity: 0.9;
+      }
+      /* Respect \n inside the typed headline */
+      #typed-headline {
+        white-space: pre-line;
+      }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1565932097704306");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1565932097704306&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body class="min-h-screen bg-white text-gray-800 antialiased">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 relative"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <img
+          src="assets/parents_first_logo.png"
+          alt="Parents First"
+          class="h-12"
+        />
+        <div class="flex items-center gap-4">
+          <a
+            href="#registration-form"
+            class="bg-gradient-to-r from-purple-500 to-teal-400 hover:from-purple-700 hover:to-teal-600 text-white px-6 py-2 rounded-full font-medium transition transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-400"
+          >
+            立即免费报名
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Scroll progress bar -->
+    <div
+      id="progress-bar"
+      class="fixed top-0 left-0 h-1 bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 w-0 z-[60] pointer-events-none"
+    ></div>
+
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen bg-gradient-to-br from-purple-400 via-purple-600 to-teal-400 text-white overflow-hidden"
+    >
+      <!-- Ambient animated blobs -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-gradient-to-tr from-teal-300/30 via-purple-300/25 to-orange-300/30 blur-3xl animate-blob"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -bottom-24 -right-16 w-[32rem] h-[32rem] rounded-full bg-gradient-to-tr from-orange-300/30 via-teal-300/25 to-purple-300/30 blur-3xl animate-blob animate-blob-delayed"
+      ></div>
+      <div class="absolute inset-0 bg-black/30"></div>
+      <div
+        class="relative max-w-7xl mx-auto px-4 py-24 grid xl:grid-cols-[1.05fr_0.95fr] lg:grid-cols-2 gap-14 lg:gap-16 items-center"
+      >
+        <div class="space-y-10 relative">
+          <!-- Subtle radial highlight -->
+
+          <div class="flex gap-3 items-center reveal-up">
+            <span
+              class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-orange-500 to-amber-500 shadow-lg shadow-orange-900/20 ring-1 ring-white/10"
+              >🎯 2小时 · 完全免费</span
+            >
+          </div>
+
+          <div class="reveal-up max-w-4xl">
+            <h1
+              class="font-extrabold tracking-tight text-4xl sm:text-5xl lg:text-6xl leading-[1.18] [text-wrap:balance]"
+            >
+              <span
+                id="typed-headline"
+                class="block text-white/90"
+                aria-live="polite"
+                aria-atomic="true"
+                data-text="🌍 新时代的孩子，\n还能用旧方法来教吗？"
+              ></span>
+              <span
+                class="ml-1 inline-block w-[2px] h-[1em] align-[-0.15em] bg-white/90 animate-caret"
+              ></span>
+            </h1>
+            <div
+              class="mt-6 rounded-2xl bg-white/10 backdrop-blur-md ring-1 ring-white/15 p-5 sm:p-7 shadow-[0_10px_40px_rgba(0,0,0,0.2)] space-y-5 text-white/95"
+            >
+              <p class="text-xl sm:text-2xl leading-relaxed">
+                在
+                <span class="font-semibold">TikTok、AI、情绪爆炸</span>
+                的时代，孩子需要的不只是分数，而是
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="reveal-up" style="transition-delay: 60ms">
+                  <div
+                    class="p-[1px] rounded-xl bg-gradient-to-r from-purple-200/60 to-teal-300/70 sheen sheen-run"
+                    style="--sheen-delay: 0s"
+                  >
+                    <div
+                      class="flex items-center gap-3 rounded-xl bg-black/25 backdrop-blur-sm ring-1 ring-white/20 px-6 py-4 shadow-lg"
+                    >
+                      <span
+                        class="w-7 h-7 rounded-full bg-gradient-to-r from-teal-300 to-emerald-300 grid place-content-center text-white shrink-0 ring-2 ring-white/20 shadow"
+                      >
+                        <i data-lucide="check" class="w-4.5 h-4.5"></i>
+                      </span>
+                      <span
+                        class="text-[1.35rem] sm:text-2xl font-semibold tracking-tight text-white"
+                        >会思考 🧠✨</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="reveal-up" style="transition-delay: 120ms">
+                  <div
+                    class="p-[1px] rounded-xl bg-gradient-to-r from-purple-200/60 to-teal-300/70 sheen sheen-run"
+                    style="--sheen-delay: 0.2s"
+                  >
+                    <div
+                      class="flex items-center gap-3 rounded-xl bg-black/25 backdrop-blur-sm ring-1 ring-white/20 px-6 py-4 shadow-lg"
+                    >
+                      <span
+                        class="w-7 h-7 rounded-full bg-gradient-to-r from-teal-300 to-emerald-300 grid place-content-center text-white shrink-0 ring-2 ring-white/20 shadow"
+                      >
+                        <i data-lucide="check" class="w-4.5 h-4.5"></i>
+                      </span>
+                      <span
+                        class="text-[1.35rem] sm:text-2xl font-semibold tracking-tight text-white"
+                        >会表达 💬💕</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="reveal-up" style="transition-delay: 180ms">
+                  <div
+                    class="p-[1px] rounded-xl bg-gradient-to-r from-purple-200/60 to-teal-300/70 sheen sheen-run"
+                    style="--sheen-delay: 0.4s"
+                  >
+                    <div
+                      class="flex items-center gap-3 rounded-xl bg-black/25 backdrop-blur-sm ring-1 ring-white/20 px-6 py-4 shadow-lg"
+                    >
+                      <span
+                        class="w-7 h-7 rounded-full bg-gradient-to-r from-teal-300 to-emerald-300 grid place-content-center text-white shrink-0 ring-2 ring-white/20 shadow"
+                      >
+                        <i data-lucide="check" class="w-4.5 h-4.5"></i>
+                      </span>
+                      <span
+                        class="text-[1.35rem] sm:text-2xl font-semibold tracking-tight text-white"
+                        >会适应 💪🏻🔥</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="reveal-up" style="transition-delay: 240ms">
+                  <div
+                    class="p-[1px] rounded-xl bg-gradient-to-r from-purple-200/60 to-teal-300/70 sheen sheen-run"
+                    style="--sheen-delay: 0.6s"
+                  >
+                    <div
+                      class="flex items-center gap-3 rounded-xl bg-black/25 backdrop-blur-sm ring-1 ring-white/20 px-6 py-4 shadow-lg"
+                    >
+                      <span
+                        class="w-7 h-7 rounded-full bg-gradient-to-r from-teal-300 to-emerald-300 grid place-content-center text-white shrink-0 ring-2 ring-white/20 shadow"
+                      >
+                        <i data-lucide="check" class="w-4.5 h-4.5"></i>
+                      </span>
+                      <span
+                        class="text-[1.35rem] sm:text-2xl font-semibold tracking-tight text-white"
+                        >会连结 🙌🏻🇲🇾</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-lg">
+                的 <span class="font-semibold">4Q 能力</span>。
+              </p>
+
+              <p class="mt-3 text-white/90">
+                <span class="align-middle mr-1">❌</span
+                >多数父母只会复制旧养育方式，或追着网红碎片建议，结果更焦虑。
+              </p>
+
+              <p class="mt-3">
+                <span class="align-middle mr-1">✨</span>这里有外面找不到的
+                <span
+                  class="bg-gradient-to-r from-teal-300 via-emerald-300 to-teal-200 bg-clip-text text-transparent font-semibold"
+                  >4Q 科艺育儿工具</span
+                >
+                —— 融合脑科学、心理学、芬兰教育，让你不再猜孩子，而是
+                <span
+                  class="font-semibold underline decoration-amber-300/70 decoration-2 underline-offset-4"
+                  >真正懂孩子</span
+                >。
+              </p>
+
+              <p class="mt-3">
+                因为未来最需要的，不是乖孩子，<br
+                  class="hidden sm:inline"
+                />而是一个
+                <span class="text-amber-300 font-semibold"
+                  >能 自信面对挑战、温暖与人相处、勇敢创造未来</span
+                >
+                的孩子。
+              </p>
+            </div>
+          </div>
+
+          <p
+            class="text-xl text-purple-50/95 leading-relaxed reveal-up max-w-2xl"
+          >
+            【2个小时说明会】<br />
+            不只是科学育儿知识，<br />
+            也是你给孩子与Ai时代的 Matching 4Q
+          </p>
+          <!-- Cards moved to right column for better balance -->
+
+          <div class="flex flex-wrap gap-4 items-center reveal-up max-w-3xl">
+            <a
+              href="#registration-form"
+              class="btn-shine bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium transition transform hover:scale-105 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400"
+            >
+              立即免费预约
+            </a>
+            <div class="flex items-center gap-3 text-sm">
+              <span
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15"
+              >
+                <i data-lucide="users" class="w-4 h-4"></i
+                ><span>已有1,847位家长受益</span>
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15"
+              >
+                <i data-lucide="award" class="w-4 h-4"></i
+                ><span>国际认证课程</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Countdown -->
+          <div
+            class="glass rounded-2xl border border-white/20 tilt reveal-up"
+            data-tilt
+          >
+            <div class="p-6">
+              <div class="text-center mb-4">
+                <h3 class="text-lg font-semibold text-orange-300 mb-2">
+                  ⏰ 报名截止倒计时
+                </h3>
+                <p class="text-sm text-purple-200">
+                  错过这次，下次开放时间未定
+                </p>
+              </div>
+              <div class="grid grid-cols-4 gap-4" id="countdown">
+                <!-- Filled by JS -->
+              </div>
+              <div class="mt-5">
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <div
+                    class="group p-[1px] rounded-2xl bg-gradient-to-r from-purple-300/20 via-teal-300/15 to-orange-300/20"
+                  >
+                    <div
+                      class="flex items-center justify-center gap-3 px-4 py-3 rounded-2xl bg-white/8 backdrop-blur border border-white/10 transition transform group-hover:-translate-y-0.25 group-hover:bg-white/12"
+                    >
+                      <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-r from-purple-500 to-teal-500 text-white shadow-sm"
+                      >
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                      </span>
+                      <span class="text-sm text-white"
+                        >9月第三场：26/9/2025 (Fri) ｜ 晚上 8:00 – 10:30</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="group p-[1px] rounded-2xl bg-gradient-to-r from-purple-300/20 via-teal-300/15 to-orange-300/20"
+                  >
+                    <div
+                      class="flex items-center justify-center gap-3 px-4 py-3 rounded-2xl bg-white/8 backdrop-blur border border-white/10 transition transform group-hover:-translate-y-0.25 group-hover:bg-white/12"
+                    >
+                      <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-r from-purple-500 to-teal-500 text-white shadow-sm"
+                      >
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                      </span>
+                      <span class="text-sm text-white"
+                        >10月第一场：07/10/2025 (Tue) ｜ 晚上 8:00 – 10:30</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pain points card (moved from left) -->
+          <div
+            class="glass rounded-2xl p-5 border border-white/20 tilt reveal-up"
+            data-tilt
+          >
+            <div class="flex items-start gap-3 mb-2">
+              <span class="text-xl">❓</span>
+              <h3 class="text-lg font-semibold text-white">
+                你是否也有这些育儿时刻？
+              </h3>
+            </div>
+            <ul class="space-y-2 text-purple-100">
+              <li class="flex items-start gap-2">
+                <span class="mt-1">🔹</span
+                ><span
+                  >“宝宝一直哭，我试了很多方法都没用…我是不是哪里做错了？”</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1">🔹</span
+                ><span>“孩子还小，不会表达，我每天都在猜他到底怎么了。”</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1">🔹</span
+                ><span>“家人说这样就好，但我心里总觉得——我可以做得更好。”</span>
+              </li>
+            </ul>
+            <div class="mt-3 text-purple-50">
+              <p class="font-medium">💡 你不是一个人在迷茫。</p>
+              <p>科学养育，不该靠猜，更不该靠吼。</p>
+            </div>
+          </div>
+
+          <!-- Pricing card (moved from left) -->
+          <div
+            class="glass rounded-2xl p-6 tilt flex flex-col justify-center border border-white/20 text-center reveal-up"
+            data-tilt
+          >
+            <div>
+              <div class="text-4xl font-bold text-orange-300 tracking-tight">
+                RM 0
+              </div>
+              <div class="text-sm text-purple-200 mt-1">完全免费</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Scroll cue -->
+      <div
+        class="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none"
+      >
+        <a
+          href="#why"
+          class="pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 hover:bg-white/15 transition"
+        >
+          <i data-lucide="chevron-down" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="section-pad relative overflow-hidden bg-gradient-to-br from-white via-purple-50 to-teal-50"
+    >
+      <!-- Decorative ambient visuals -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-24 -right-24 w-[40rem] h-[40rem] rounded-full bg-gradient-to-tr from-teal-300/30 via-purple-300/25 to-orange-200/25 blur-3xl animate-blob"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -bottom-32 -left-28 w-[34rem] h-[34rem] rounded-full bg-gradient-to-tr from-orange-200/25 via-teal-200/25 to-purple-200/25 blur-3xl animate-blob animate-blob-delayed"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.7),transparent_60%)]"
+      ></div>
+
+      <div class="relative max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <!-- Content card -->
+          <div class="reveal-up tilt" data-tilt>
+            <div
+              class="relative p-[2px] rounded-3xl bg-gradient-to-r from-purple-400 via-teal-400 to-amber-300 shadow-xl"
+            >
+              <div
+                class="relative rounded-3xl bg-white/90 backdrop-blur-sm p-8 md:p-10"
+              >
+                <div
+                  class="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/30 to-teal-300/30 rounded-2xl blur-xl pointer-events-none"
+                ></div>
+                <h3
+                  class="text-3xl md:text-4xl font-bold leading-tight text-gray-900 tracking-tight reveal-up"
+                >
+                  🧠 2小时，送给0–6岁父母的第一堂“育儿解码课”
+                </h3>
+                <div
+                  class="mt-6 space-y-4 text-lg text-gray-800 leading-relaxed"
+                >
+                  <p class="font-semibold reveal-up">
+                    <span
+                      class="inline-block px-2 py-1 rounded-lg bg-gradient-to-r from-teal-100 to-lime-100 shadow-sm"
+                    >
+                      【4Q Mirror PlayLab 探索营】
+                    </span>
+                  </p>
+                  <p class="reveal-up">
+                    不是育儿教条，而是给你一套从脑科学出发的育儿系统，
+                  </p>
+                  <p class="reveal-up">
+                    让你在宝宝还不会表达前，就能建立真正的理解与连接。
+                  </p>
+                </div>
+                <div
+                  class="mt-8 h-1 w-32 bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 rounded-full reveal-up"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image card -->
+          <div class="relative reveal-up">
+            <div
+              class="absolute -top-6 -right-6 w-28 h-28 rounded-2xl bg-gradient-to-br from-amber-300/40 to-teal-300/30 blur-2xl pointer-events-none"
+            ></div>
+            <div
+              class="p-[2px] rounded-3xl bg-gradient-to-br from-purple-300 via-teal-300 to-amber-200 shadow-xl tilt"
+              data-tilt
+            >
+              <div
+                class="relative rounded-3xl overflow-hidden bg-white/40 backdrop-blur-sm ring-1 ring-white/40"
+              >
+                <img
+                  src="assets/family-testimonial.png"
+                  alt="幸福的父母与宝宝"
+                  class="w-full h-auto object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-purple-50/40 via-transparent to-teal-50/40 mix-blend-overlay pointer-events-none"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problems -->
+
+    <!-- Workshop Content -->
+
+    <section class="py-20 bg-gradient-to-br from-purple-50 to-teal-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900">
+            🎁 免费工作坊｜你将收获
+          </h2>
+          <p class="mt-3 text-gray-600">
+            2 小时高效体验，给你清晰、可落地的育儿方向
+          </p>
+        </div>
+
+        <!-- Key takeaways as modern cards -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- 零门槛入门 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-purple-200 via-teal-200 to-orange-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-teal-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-1">零门槛入门</h4>
+              <p class="text-gray-600 text-sm">
+                完全免费、2小时即可完成的高效体验！
+              </p>
+            </div>
+          </div>
+
+          <!-- 大脑发展规律 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-blue-200 to-purple-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="brain" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-1">
+                了解 0–6 岁大脑发展规律
+              </h4>
+              <p class="text-gray-600 text-sm">
+                科学拆解宝宝的情绪反应、压力行为、沟通方式
+              </p>
+            </div>
+          </div>
+
+          <!-- 学会回应，而不是反应 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-orange-200 to-rose-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="hand" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-1">
+                学会回应，而不是反应
+              </h4>
+              <p class="text-gray-600 text-sm">
+                从“为什么一直哭”到“我懂你怎么了”，建立安全感连接
+              </p>
+            </div>
+          </div>
+
+          <!-- 读懂自己的育儿模式 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-teal-200 to-emerald-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-400 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="heart" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-1">
+                读懂自己的育儿模式
+              </h4>
+              <p class="text-gray-600 text-sm">
+                你焦虑、崩溃、愧疚，不是你的错，而是你没学会调适自己的情绪
+              </p>
+            </div>
+          </div>
+
+          <!-- 中文授课 · 社群陪伴 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-fuchsia-200 to-cyan-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-1">
+                中文授课 · 父母社群 · 温柔陪伴
+              </h4>
+              <p class="text-gray-600 text-sm">
+                Parents First 认证导师，带你开启温柔而坚定的育儿旅程
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="why" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">
+            💡4Q，是婴幼儿脑科学养育的核心
+          </h2>
+          <!-- <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          基于国际认可的 MindVehicle 模型，通过科学的方法帮助父母理解孩子的四个核心维度，
+          这不是传统的说教式育儿，而是基于科学研究的系统性方法。
+        </p> -->
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div class="relative group">
+            <!-- Ambient glow blobs for modern blended background -->
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute -top-10 -left-10 w-40 h-40 rounded-full bg-gradient-to-tr from-teal-300/35 via-purple-300/30 to-orange-200/30 blur-3xl"
+            ></div>
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute -bottom-10 -right-12 w-52 h-52 rounded-full bg-gradient-to-tr from-orange-200/35 via-teal-200/30 to-purple-200/30 blur-3xl"
+            ></div>
+
+            <!-- Gradient frame + soft ring -->
+            <div
+              class="relative p-[2px] rounded-3xl bg-gradient-to-br from-purple-200 via-teal-200 to-amber-200 shadow-2xl"
+            >
+              <div
+                class="relative rounded-3xl overflow-hidden bg-white ring-1 ring-gray-100"
+              >
+                <img
+                  src="assets/mindvehicle_hero_image.png"
+                  alt="4Q科学育儿法 - MindVehicle 模型"
+                  class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <!-- Subtle overlay tint to blend with page palette -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-tr from-purple-50/40 via-transparent to-teal-50/40 mix-blend-overlay pointer-events-none"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div class="text-blue-500 bg-gray-100 p-3 rounded-full">
+                <i data-lucide="brain" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  IQ - 智力维度
+                </h3>
+                <p class="text-gray-600 mb-1">
+                  了解孩子的学习方式和思维模式，因材施教
+                </p>
+                <p class="text-sm text-gray-500 italic">
+                  如何认识世界？学会运用时间，正确的引导感度
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-red-500 bg-gray-100 p-3 rounded-full">
+                <i data-lucide="heart" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  EQ - 情感维度
+                </h3>
+                <p class="text-gray-600 mb-1">
+                  掌握情绪管理和情感沟通技巧，建立深度连接
+                </p>
+                <p class="text-sm text-gray-500 italic">
+                  宝宝如何表达情绪？了解哭闹背后的真正情绪需求
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-orange-500 bg-gray-100 p-3 rounded-full">
+                <i data-lucide="zap" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  AQ - 适应力
+                </h3>
+                <p class="text-gray-600 mb-1">
+                  培养孩子在变化与挑战中的灵活应对与韧性，遇到困难不退缩
+                </p>
+                <p class="text-sm text-gray-500 italic">
+                  宝宝如何面对变化与困难？你如何帮助 TA 建立安全感与适应力
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="text-green-500 bg-gray-100 p-3 rounded-full">
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  SQ - 社交维度
+                </h3>
+                <p class="text-gray-600 mb-1">
+                  提升孩子的人际交往和合作能力，建立良好关系
+                </p>
+                <p class="text-sm text-gray-500 italic">
+                  宝宝怎么和你“对话”？理解非语言沟通信号，给予回应
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative p-[1px] rounded-2xl bg-gradient-to-r from-purple-200 via-teal-200 to-orange-200"
+        >
+          <div
+            class="rounded-2xl bg-white/90 backdrop-blur ring-1 ring-gray-100 shadow-xl"
+          >
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left">
+                <thead
+                  class="bg-gradient-to-r from-purple-50 to-teal-50 text-gray-700"
+                >
+                  <tr>
+                    <th
+                      class="p-4 text-xs font-semibold tracking-wide uppercase"
+                    >
+                      4Q类型
+                    </th>
+                    <th
+                      class="p-4 text-xs font-semibold tracking-wide uppercase"
+                    >
+                      宝宝表现
+                    </th>
+                    <th
+                      class="p-4 text-xs font-semibold tracking-wide uppercase"
+                    >
+                      父母可以怎么做
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-gray-700">
+                  <tr class="hover:bg-gray-50/80 transition">
+                    <td class="p-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white grid place-content-center"
+                        >
+                          <i data-lucide="brain" class="w-5 h-5"></i>
+                        </span>
+                        <div>
+                          <div class="font-semibold">IQ · 智力</div>
+                          <div class="text-xs text-gray-500">思维与学习</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-4">宝宝怎么探索世界？</td>
+                    <td class="p-4">
+                      学会运用
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 text-xs font-medium align-middle"
+                        >MI</span
+                      >，正确引导积极度
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50/80 transition">
+                    <td class="p-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-9 h-9 rounded-full bg-gradient-to-r from-rose-500 to-red-500 text-white grid place-content-center"
+                        >
+                          <i data-lucide="heart" class="w-5 h-5"></i>
+                        </span>
+                        <div>
+                          <div class="font-semibold">EQ · 情感</div>
+                          <div class="text-xs text-gray-500">情绪与连接</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-4">宝宝如何表达情绪？</td>
+                    <td class="p-4">了解哭闹背后的真正情绪需求</td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50/80 transition">
+                    <td class="p-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-9 h-9 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white grid place-content-center"
+                        >
+                          <i data-lucide="zap" class="w-5 h-5"></i>
+                        </span>
+                        <div>
+                          <div class="font-semibold">AQ · 适应力</div>
+                          <div class="text-xs text-gray-500">韧性与适应</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-4">宝宝如何面对挑战与不安？</td>
+                    <td class="p-4">如何帮助 TA 建立安全感与适应力</td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50/80 transition">
+                    <td class="p-4">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-9 h-9 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white grid place-content-center"
+                        >
+                          <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </span>
+                        <div>
+                          <div class="font-semibold">SQ · 社交</div>
+                          <div class="text-xs text-gray-500">沟通与合作</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="p-4">宝宝怎么和你“对话”？</td>
+                    <td class="p-4">理解非语言沟通信号，给予回应</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16">
+          <div
+            class="relative max-w-8xl mx-auto p-[2px] rounded-3xl bg-gradient-to-r from-purple-300 via-teal-300 to-amber-200 shadow-xl reveal-up"
+          >
+            <div
+              class="relative rounded-3xl bg-white/90 backdrop-blur-sm px-8 py-10 md:py-14"
+            >
+              <div
+                class="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-purple-300/40 to-teal-200/40 rounded-3xl blur-2xl pointer-events-none"
+              ></div>
+              <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="text-center md:text-left space-y-4">
+                  <h3 class="text-2xl font-bold text-gray-800 leading-tight">
+                    🧭 越早掌握这 4Q 密码
+                  </h3>
+                  <p class="text-xl text-gray-700 leading-relaxed">
+                    就越能为孩子奠定一生的心理安全基础
+                  </p>
+                  <div
+                    class="h-1 w-28 md:ml-0 mx-auto bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 rounded-full"
+                  ></div>
+                </div>
+                <div class="relative flex justify-center md:justify-end">
+                  <div
+                    class="relative overflow-hidden rounded-3xl group shadow-lg ring-1 ring-gray-200/70 max-w-xs sm:max-w-sm w-full"
+                  >
+                    <img
+                      src="assets/family-photo.jpg"
+                      alt="温馨家庭合照"
+                      class="w-full h-full object-cover aspect-[5/4] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-tr from-purple-50/40 via-transparent to-teal-50/40 pointer-events-none mix-blend-overlay"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">
+              为什么值得拥有这场体验？
+            </h2>
+            <div
+              class="mx-auto max-w-md md:max-w-lg overflow-hidden rounded-2xl shadow-xl"
+            >
+              <img
+                src="assets/cce_finland.png"
+                alt="幸福的父母与宝宝"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="badge-check" class="w-10 h-10 text-white"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">芬兰 CCE 认证</h4>
+              <p class="text-gray-600 text-sm">全球排名第一的育儿系统</p>
+            </div>
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-purple-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="brain" class="w-10 h-10 text-white"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">脑科学支撑</h4>
+              <p class="text-gray-600 text-sm">
+                整合脑科学、心理学、育儿心理研究
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="target" class="w-10 h-10 text-white"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">实效验证</h4>
+              <p class="text-gray-600 text-sm">2000+ 家庭实践验证，效果显著</p>
+            </div>
+            <div class="text-center">
+              <div
+                class="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i data-lucide="award" class="w-10 h-10 text-white"></i>
+              </div>
+              <h4 class="font-semibold text-gray-800 mb-2">大学认证</h4>
+              <p class="text-gray-600 text-sm">
+                唯一获得大马大学认证的科学育儿课程
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience Fit -->
+    <section
+      class="py-20 bg-gradient-to-br from-white via-purple-50 to-teal-50"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-4xl font-bold text-gray-800">适合什么样的父母？</h2>
+          <div
+            class="mt-4 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400"
+          ></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- 0–6 岁父母 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-purple-200 via-teal-200 to-orange-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-400 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900">
+                0–6岁宝宝的全职妈妈或新手爸妈
+              </h4>
+            </div>
+          </div>
+
+          <!-- 焦虑迷茫的父母 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-blue-200 to-purple-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900">
+                感到压力、焦虑、内疚、迷茫的父母
+              </h4>
+            </div>
+          </div>
+
+          <!-- 想更温柔陪伴的你 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-amber-200 to-lime-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-amber-500 to-lime-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900">
+                想更有智慧、更温柔地陪伴宝宝成长的你
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+
+    <section class="py-24 bg-white relative overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.9),transparent_70%)]"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 relative">
+        <div class="text-center mb-14">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4 tracking-tight">
+            ❤️ 父母真心回馈:
+          </h2>
+          <div
+            class="h-1 w-24 mx-auto bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 rounded-full"
+          ></div>
+        </div>
+
+        <!-- Responsive testimonial image gallery -->
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <figure
+            class="group relative p-[2px] rounded-3xl bg-gradient-to-br from-purple-200 via-teal-200 to-orange-200 shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="rounded-3xl overflow-hidden bg-white aspect-[4/5] flex items-center justify-center p-2"
+            >
+              <img
+                src="assets/testi_1.jpeg"
+                alt="家长反馈 1"
+                loading="lazy"
+                decoding="async"
+                class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
+            <figcaption
+              class="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition bg-gradient-to-t from-black/50 via-black/20 to-transparent text-white text-sm rounded-3xl"
+            >
+              <span class="font-medium">真实家长反馈</span>
+            </figcaption>
+          </figure>
+
+          <figure
+            class="group relative p-[2px] rounded-3xl bg-gradient-to-br from-blue-200 via-purple-200 to-teal-200 shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="rounded-3xl overflow-hidden bg-white aspect-[4/5] flex items-center justify-center p-2"
+            >
+              <img
+                src="assets/testi_2.jpeg"
+                alt="家长反馈 2"
+                loading="lazy"
+                decoding="async"
+                class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
+            <figcaption
+              class="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition bg-gradient-to-t from-black/50 via-black/20 to-transparent text-white text-sm rounded-3xl"
+            >
+              <span class="font-medium">真实家长反馈</span>
+            </figcaption>
+          </figure>
+
+          <figure
+            class="group relative p-[2px] rounded-3xl bg-gradient-to-br from-amber-200 via-teal-200 to-purple-200 shadow-sm hover:shadow-md transition"
+          >
+            <div
+              class="rounded-3xl overflow-hidden bg-white aspect-[4/5] flex items-center justify-center p-2"
+            >
+              <img
+                src="assets/testi_3.jpeg"
+                alt="家长反馈 3"
+                loading="lazy"
+                decoding="async"
+                class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </div>
+            <figcaption
+              class="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition bg-gradient-to-t from-black/50 via-black/20 to-transparent text-white text-sm rounded-3xl"
+            >
+              <span class="font-medium">真实家长反馈</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Free Offer -->
+
+    <!-- <section class="py-20 bg-gradient-to-r from-purple-500 to-teal-400 text-white">
+  <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+    <h2 class="text-4xl font-bold">🎟 限量免费席位｜立即预约了解</h2>
+    <div class="space-y-3 text-xl">
+      <p>📅 日期：20/8/2025 或者 27/8/2025</p>
+      <p>⏰ 时间：8pm - 10.30pm</p>
+      <p>🌐 形式：ZOOM 线上直播（报名后发送专属链接）</p>
+      <p>🎫 费用：免费 · 无需付款</p>
+    </div>
+    <a href="#registration-form" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-12 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-lg">
+      立即免费预约
+    </a>
+  </div>
+</section> -->
+
+    <!-- Registration Form -->
+    <section
+      id="registration-form"
+      class="py-20 bg-gradient-to-br from-purple-400 via-purple-600 to-teal-400 text-white"
+    >
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">🎟️ 限量免费席位｜立即预约了解</h2>
+        </div>
+        <!-- Prominent details strip -->
+        <div class="mb-8">
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-r from-purple-300/60 via-teal-300/60 to-orange-300/60"
+          >
+            <div
+              class="rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 p-6"
+            >
+              <div class="grid sm:grid-cols-2 gap-5">
+                <!-- 日期 -->
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-10 h-10 rounded-xl bg-gradient-to-r from-purple-500 to-teal-500 grid place-content-center"
+                  >
+                    <i data-lucide="calendar" class="w-5 h-5 text-white"></i>
+                  </span>
+                  <div>
+                    <div
+                      class="text-purple-100 text-xs uppercase tracking-wide"
+                    >
+                      日期
+                    </div>
+                    <div class="text-white font-medium">
+                      26/9/2025 (Fri) 或 07/10/2025 (Tue)
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 时间 -->
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-10 h-10 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 grid place-content-center"
+                  >
+                    <i data-lucide="clock" class="w-5 h-5 text-white"></i>
+                  </span>
+                  <div>
+                    <div
+                      class="text-purple-100 text-xs uppercase tracking-wide"
+                    >
+                      时间
+                    </div>
+                    <div class="text-white font-medium">8pm - 10.30pm</div>
+                  </div>
+                </div>
+
+                <!-- 形式 -->
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-10 h-10 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 grid place-content-center"
+                  >
+                    <i data-lucide="video" class="w-5 h-5 text-white"></i>
+                  </span>
+                  <div>
+                    <div
+                      class="text-purple-100 text-xs uppercase tracking-wide"
+                    >
+                      形式
+                    </div>
+                    <div class="text-white font-medium">
+                      ZOOM 线上直播（报名后发送专属链接）
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 费用 -->
+                <div class="flex items-center gap-3">
+                  <span
+                    class="w-10 h-10 rounded-xl bg-gradient-to-r from-pink-500 to-red-500 grid place-content-center"
+                  >
+                    <i data-lucide="ticket" class="w-5 h-5 text-white"></i>
+                  </span>
+                  <div>
+                    <div
+                      class="text-purple-100 text-xs uppercase tracking-wide"
+                    >
+                      费用
+                    </div>
+                    <div class="text-white font-medium">免费 · 无需付款</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center mt-6">
+                <p class="text-lg md:text-xl font-semibold text-white">
+                  📱立即点击报名，开启全新育儿认知之旅👇
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl">
+          <form class="p-8 space-y-6" onsubmit="return handleSubmit(event)">
+            <div>
+              <label for="name" class="text-purple-700 font-medium"
+                >名字：</label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="请输入您的姓名"
+                autocomplete="name"
+                autocapitalize="none"
+                spellcheck="false"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+            <div>
+              <label for="phone" class="text-purple-700 font-medium"
+                >电话号码：</label
+              >
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                required
+                placeholder="请输入您的手机号码"
+                autocapitalize="none"
+                spellcheck="false"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+            <div>
+              <label for="email" class="text-purple-700 font-medium"
+                >Email：</label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                required
+                placeholder="请输入您的电子邮箱"
+                autocapitalize="none"
+                spellcheck="false"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+            <div>
+              <label for="child_age" class="text-purple-700 font-medium"
+                >孩子几岁？（如没有，写 NO）</label
+              >
+              <input
+                id="child_age"
+                name="child_age"
+                type="text"
+                required
+                placeholder="例如：2 岁 / NO"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+            <div>
+              <label for="session" class="text-purple-700 font-medium"
+                >哪一场？</label
+              >
+              <select
+                id="session"
+                name="session"
+                required
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              >
+                <option value="">请选择</option>
+
+                <option value="2025-09-26 @ 8pm-10.30pm">
+                  26/9/2025 (Fri) @ 8pm-10.30pm
+                </option>
+
+                <option value="2025-10-07 @ 8pm-10.30pm">
+                  07/10/2025 (Fri) @ 8pm-10.30pm
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label for="heard_from" class="text-purple-700 font-medium"
+                >你是如何知道这个育儿说明会的呢？</label
+              >
+              <select
+                id="heard_from"
+                name="heard_from"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              >
+                <option value="">请选择</option>
+                <option value="Facebook & Instagram">
+                  Facebook & Instagram
+                </option>
+                <option value="Family & Friends">Family & Friends</option>
+                <option value="Deemcee">Deemcee</option>
+                <option value="Kidzutopia">Kidzutopia</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <!-- Conditional: Other input -->
+            <div id="heard_from_other_wrap" class="hidden">
+              <label for="heard_from_other" class="text-purple-700 font-medium"
+                >若选择 Others，请填写：</label
+              >
+              <input
+                id="heard_from_other"
+                name="heard_from_other"
+                type="text"
+                placeholder="请说明您如何得知"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+
+            <!-- Conditional: Family & Friends referral input -->
+            <div id="heard_from_referral_wrap" class="hidden">
+              <label
+                for="heard_from_referral"
+                class="text-purple-700 font-medium"
+                >如果你是从家人/朋友那里知道这个说明会，请写下朋友的资料</label
+              >
+              <input
+                id="heard_from_referral"
+                name="heard_from_referral"
+                type="text"
+                placeholder="Aileen, 011-234567"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              />
+            </div>
+
+            <!-- Conditional: Deemcee branches dropdown -->
+            <div id="deemcee_branch_wrap" class="hidden">
+              <label for="deemcee_branch" class="text-purple-700 font-medium"
+                >请选择 Deemcee 分行</label
+              >
+              <select
+                id="deemcee_branch"
+                name="deemcee_branch"
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              >
+                <option value="">请选择分行</option>
+                <option value="Deemcee Aman Suria, PJ">
+                  Deemcee Aman Suria, PJ
+                </option>
+                <option value="Deemcee Anggun City, Rawang">
+                  Deemcee Anggun City, Rawang
+                </option>
+                <option value="Deemcee Bandar Botanic">
+                  Deemcee Bandar Botanic
+                </option>
+                <option value="Deemcee Bandar Kinrara, Puchong">
+                  Deemcee Bandar Kinrara, Puchong
+                </option>
+                <option value="Deemcee Bandar Puteri, Puchong">
+                  Deemcee Bandar Puteri, Puchong
+                </option>
+                <option value="Deemcee Bandar Rimbayu">
+                  Deemcee Bandar Rimbayu
+                </option>
+                <option value="Deemcee Bandar Sri Damansara">
+                  Deemcee Bandar Sri Damansara
+                </option>
+                <option value="Deemcee Bayan Lepas, Penang">
+                  Deemcee Bayan Lepas, Penang
+                </option>
+                <option value="Deemcee Bintulu, Sarawak">
+                  Deemcee Bintulu, Sarawak
+                </option>
+                <option value="Deemcee Bukit Mertajam, Penang">
+                  Deemcee Bukit Mertajam, Penang
+                </option>
+                <option value="Deemcee C180, Cheras">
+                  Deemcee C180, Cheras
+                </option>
+                <option value="Deemcee Cyberjaya">Deemcee Cyberjaya</option>
+                <option value="Deemcee Eco Majestic, Semenyih">
+                  Deemcee Eco Majestic, Semenyih
+                </option>
+                <option value="Deemcee Eight Mile Plains">
+                  Deemcee Eight Mile Plains
+                </option>
+                <option value="Deemcee Horizon Hills">
+                  Deemcee Horizon Hills
+                </option>
+                <option value="Deemcee Jade Hills, Kajang">
+                  Deemcee Jade Hills, Kajang
+                </option>
+                <option value="Deemcee Kepong Baru">Deemcee Kepong Baru</option>
+                <option value="Deemcee Kota Damansara">
+                  Deemcee Kota Damansara
+                </option>
+                <option value="Deemcee Kota Syahbandar">
+                  Deemcee Kota Syahbandar
+                </option>
+                <option value="Deemcee Kota Kemuning">
+                  Deemcee Kota Kemuning
+                </option>
+                <option value="Deemcee Kuala Terengganu">
+                  Deemcee Kuala Terengganu
+                </option>
+                <option value="Deemcee Miri, Sarawak">
+                  Deemcee Miri, Sarawak
+                </option>
+                <option value="Deemcee Mount Austin">
+                  Deemcee Mount Austin
+                </option>
+                <option value="Deemcee Pine Square, Kuching">
+                  Deemcee Pine Square, Kuching
+                </option>
+                <option value="Deemcee Saradise, Kuching">
+                  Deemcee Saradise, Kuching
+                </option>
+                <option value="Deemcee Seremban 2">Deemcee Seremban 2</option>
+                <option value="Deemcee Setia Alam, Selangor">
+                  Deemcee Setia Alam, Selangor
+                </option>
+                <option value="Deemcee Setia Taipan">
+                  Deemcee Setia Taipan
+                </option>
+                <option value="Deemcee Sibu, Sarawak">
+                  Deemcee Sibu, Sarawak
+                </option>
+                <option value="Deemcee Simpang Ampat, Penang">
+                  Deemcee Simpang Ampat, Penang
+                </option>
+                <option value="Deemcee Sri Petaling">
+                  Deemcee Sri Petaling
+                </option>
+                <option value="Deemcee Sungai Abong, Muar">
+                  Deemcee Sungai Abong, Muar
+                </option>
+                <option value="Deemcee Taman Danau Kota, Setapak">
+                  Deemcee Taman Danau Kota, Setapak
+                </option>
+                <option value="Deemcee Taman Segar, Cheras">
+                  Deemcee Taman Segar, Cheras
+                </option>
+                <option value="Deemcee Taman Sutera Skudai">
+                  Deemcee Taman Sutera Skudai
+                </option>
+                <option value="Deemcee USJ Taipan">Deemcee USJ Taipan</option>
+              </select>
+            </div>
+
+            <!-- New: 您来自哪里 (Malaysia states) -->
+            <div>
+              <label for="state" class="text-purple-700 font-medium"
+                >您来自哪里</label
+              >
+              <select
+                id="state"
+                name="state"
+                required
+                class="mt-2 w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500 border-purple-200 text-black"
+              >
+                <option value="">请选择州/联邦直辖区</option>
+                <option value="Johor">Johor</option>
+                <option value="Kedah">Kedah</option>
+                <option value="Kelantan">Kelantan</option>
+                <option value="Malacca">Malacca</option>
+                <option value="Negeri Sembilan">Negeri Sembilan</option>
+                <option value="Pahang">Pahang</option>
+                <option value="Penang">Penang</option>
+                <option value="Perak">Perak</option>
+                <option value="Perlis">Perlis</option>
+                <option value="Sabah">Sabah</option>
+                <option value="Sarawak">Sarawak</option>
+                <option value="Selangor">Selangor</option>
+                <option value="Terengganu">Terengganu</option>
+                <option value="Kuala Lumpur">
+                  Kuala Lumpur (Federal Territory)
+                </option>
+                <option value="Labuan">Labuan (Federal Territory)</option>
+                <option value="Putrajaya">Putrajaya (Federal Territory)</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-400 disabled:opacity-80 disabled:cursor-not-allowed text-white py-4 text-lg font-medium rounded-full transition transform hover:scale-105"
+            >
+              立即免费预约
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h3 class="text-3xl md:text-4xl font-bold text-gray-900">
+            🎁 2小时后，你将拥有
+          </h3>
+          <div
+            class="mt-4 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400"
+          ></div>
+          <p class="mt-4 text-gray-600">用两小时，换来长期的亲子连接与方向</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- 视角 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-purple-200 to-teal-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-teal-500 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                一个新的理解育儿教育的视角
+              </h4>
+            </div>
+          </div>
+
+          <!-- 方向 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-orange-200 to-rose-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                一个温柔而科学的养育方向
+              </h4>
+            </div>
+          </div>
+
+          <!-- 社群 -->
+          <div
+            class="p-[1px] rounded-2xl bg-gradient-to-br from-teal-200 to-green-200"
+          >
+            <div
+              class="rounded-2xl bg-white p-6 h-full shadow-sm hover:shadow-lg transition"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-400 text-white flex items-center justify-center mb-4"
+              >
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <h4 class="font-semibold text-gray-900 mb-2">
+                一个和你一样想和孩子一起成长的父母社群
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <a
+            href="#registration-form"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white bg-orange-500 hover:bg-orange-600 font-medium shadow-lg transition"
+          >
+            现在预约 · 免费席位有限
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4">
+        <div
+          class="p-[1px] rounded-3xl bg-gradient-to-r from-purple-200 via-teal-200 to-orange-200"
+        >
+          <div class="rounded-3xl bg-white py-10 px-8 text-center shadow-md">
+            <div
+              class="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500 text-white flex items-center justify-center shadow mb-4"
+            >
+              <i data-lucide="quote" class="w-7 h-7"></i>
+            </div>
+            <p
+              class="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed"
+            >
+              宝宝需要的，从来不是完美的父母，而是“愿意看见他、愿意改变的你”。
+            </p>
+            <p class="mt-3 text-lg text-gray-600">
+              用2小时，成为你孩子最安心的依靠。
+            </p>
+            <div
+              class="mt-6 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <img
+              src="assets/parents_first_logo1.png"
+              alt="Parents First"
+              class="h-12 mb-4 brightness-0 invert"
+            />
+            <p class="text-gray-400 mb-4">
+              马来西亚首个国际认证的华语家庭教育课程，致力于帮助家长建立科学的育儿理念。
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+            <div class="space-y-2 text-gray-300">
+              <div class="flex items-center gap-2">
+                <i data-lucide="phone" class="w-4 h-4"></i
+                ><span>+6014-685 7273</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4"></i
+                ><span>parentfirst2u@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Parents First. 保留所有权利。</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS: countdown + form -->
+    <script>
+      // Dynamic countdown to 20 Aug 2025, 8:00 PM (UTC+8)
+      const countdownEl = document.getElementById("countdown");
+      const targetTime = new Date("2025-09-26T20:00:00+08:00").getTime();
+      let countdownInterval;
+
+      function getTimeLeft() {
+        const now = Date.now();
+        let diff = Math.max(0, targetTime - now);
+
+        const dayMs = 24 * 60 * 60 * 1000;
+        const hourMs = 60 * 60 * 1000;
+        const minMs = 60 * 1000;
+
+        const days = Math.floor(diff / dayMs);
+        diff -= days * dayMs;
+        const hours = Math.floor(diff / hourMs);
+        diff -= hours * hourMs;
+        const minutes = Math.floor(diff / minMs);
+        diff -= minutes * minMs;
+        const seconds = Math.floor(diff / 1000);
+
+        return { days, hours, minutes, seconds };
+      }
+
+      function renderCountdown() {
+        if (!countdownEl) return;
+        const t = getTimeLeft();
+        const parts = [
+          { label: "天", value: t.days },
+          { label: "时", value: t.hours },
+          { label: "分", value: t.minutes },
+          { label: "秒", value: t.seconds },
+        ];
+        countdownEl.innerHTML = parts
+          .map(
+            (p) => `
+        <div class="text-center">
+          <div class="bg-white/20 rounded-lg p-3 mb-2">
+            <span class="text-2xl font-bold">${String(p.value).padStart(
+              2,
+              "0"
+            )}</span>
+          </div>
+          <span class="text-sm text-purple-200">${p.label}</span>
+        </div>
+      `
+          )
+          .join("");
+
+        // Stop when reached
+        if (targetTime - Date.now() <= 0 && countdownInterval) {
+          clearInterval(countdownInterval);
+        }
+      }
+
+      // Start countdown
+      renderCountdown();
+      countdownInterval = setInterval(renderCountdown, 1000);
+
+      // --- Typed effect for hero headline (one-time, grapheme-aware) ---
+      (function () {
+        const el = document.getElementById("typed-headline");
+        if (!el) return;
+        const params = new URLSearchParams(window.location.search);
+        const ab = params.get("ab");
+        let fullText = el.getAttribute("data-text") || "";
+        // A/B variant when ?ab=2
+        if (ab === "2") {
+          fullText = "🌍 AI时代，孩子需要的不只是分数，而是4Q能力";
+        }
+        // Convert literal \n to actual newline character for controlled line breaks
+        fullText = fullText.replace(/\\n/g, "\n");
+        const prefersReduce =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const noType = params.get("type") === "off" || ab === "notype";
+        if (prefersReduce || !fullText || noType) {
+          el.textContent = fullText;
+          return;
+        }
+        // Split into graphemes to avoid breaking emoji/surrogate pairs
+        const seg =
+          Intl && Intl.Segmenter
+            ? new Intl.Segmenter("zh", { granularity: "grapheme" })
+            : null;
+        const parts = seg
+          ? Array.from(seg.segment(fullText), (s) => s.segment)
+          : Array.from(fullText);
+        el.textContent = "";
+        let i = 0;
+        const base = Math.max(
+          10,
+          Math.min(120, Number(params.get("speed")) || 26)
+        );
+        const caret = el.nextElementSibling;
+        const nextDelay = (ch, idx) => {
+          // Slightly slower at start, add pauses on punctuation
+          const startBoost = idx < 6 ? 14 : idx < 12 ? 8 : 0;
+          const punct = /[，。！？、,.!?…]/.test(ch) ? 220 : 0;
+          return base + startBoost + punct;
+        };
+        const step = () => {
+          if (i <= parts.length) {
+            el.textContent = parts.slice(0, i).join("");
+            i++;
+            if (i <= parts.length) {
+              setTimeout(step, nextDelay(parts[i - 1] || "", i - 1));
+            } else {
+              // Fade out caret after a short hold
+              if (caret) {
+                setTimeout(() => {
+                  caret.style.animation = "none";
+                  caret.style.opacity = "0";
+                  caret.style.transition = "opacity .4s ease";
+                }, 350);
+              }
+            }
+          }
+        };
+        setTimeout(step, 200);
+      })();
+
+      // --- One-time CTA sheen when visible ---
+      (function () {
+        const cta = document.querySelector(
+          'a.btn-shine[href="#registration-form"]'
+        );
+        if (!cta || !("IntersectionObserver" in window)) return;
+        let done = false;
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (done) return;
+              if (e.isIntersecting) {
+                cta.classList.add("run-sheen");
+                done = true;
+                setTimeout(() => cta.classList.remove("run-sheen"), 1200);
+                io.disconnect();
+              }
+            });
+          },
+          { threshold: 0.6 }
+        );
+        io.observe(cta);
+      })();
+
+      // --- Scroll progress bar ---
+      function updateProgressBar() {
+        const bar = document.getElementById("progress-bar");
+        if (!bar) return;
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight || 1;
+        const percent = Math.min(
+          100,
+          Math.max(0, (scrollTop / scrollHeight) * 100)
+        );
+        bar.style.width = percent + "%";
+      }
+      window.addEventListener("scroll", updateProgressBar, { passive: true });
+      window.addEventListener("resize", updateProgressBar);
+      window.addEventListener("DOMContentLoaded", updateProgressBar);
+      window.addEventListener("load", updateProgressBar);
+
+      // --- Google Apps Script (GAS) Web App integration ---
+      // This posts the form to your GAS Web App which appends a new row into your Google Sheet.
+      // Setup steps (one-time):
+      // 1) Open your target Google Sheet -> Extensions -> Apps Script.
+      // 2) Paste the server code shown in the README section below into Code.gs and deploy:
+      //    Deploy -> New deployment -> Web app -> Execute as: Me; Who has access: Anyone.
+      // 3) Copy the Web App URL and paste it into GAS_ENDPOINT below.
+      // 4) (Optional) Set a shared secret in both GAS and ENDPOINT_SECRET to reduce spam.
+
+      const GAS_ENDPOINT =
+        "https://script.google.com/macros/s/AKfycbxliZ9BJBfH7wr4RjtiePhHUd6KHrYf8n6LJGIy9zAL1I1RYnsIZ8NaaAQHEJsT9Hne/exec";
+      const ENDPOINT_SECRET = "qwe@fxcvcx!@#@@#@@@1235343sdfsdf";
+      // Target Google Sheets tab (worksheet) for all submissions
+      const SHEET_TAB = "Website";
+
+      // Normalize Malaysian phone number to +60 format
+      function normalizePhoneMY(input) {
+        if (!input) return "";
+        let s = String(input).trim();
+        // Replace leading 00 with +
+        s = s.replace(/^00+/, "+");
+        // Keep + for country code, strip non-digits elsewhere
+        const hasPlus = s.startsWith("+");
+        s = (hasPlus ? "+" : "") + s.replace(/[^\d]/g, "");
+
+        // If starts with +60
+        if (s.startsWith("+60")) {
+          // Remove any extra leading 0 after country code e.g. +60012... -> +6012...
+          return s.replace(/^\+60\s*0+/, "+60");
+        }
+        // If starts with 60 (no +)
+        if (s.startsWith("60")) {
+          s = "+" + s;
+          return s.replace(/^\+60\s*0+/, "+60");
+        }
+        // If starts with 0 (local format), drop leading 0 and add +60
+        if (s.startsWith("0")) {
+          return "+60" + s.replace(/^0+/, "");
+        }
+        // If already +<other> or plain digits without prefix, assume local digits -> prefix +60 if looks like MY mobile (starts with 1)
+        if (s.startsWith("+")) return s; // other country code, leave as is
+        if (/^1\d{7,9}$/.test(s)) {
+          // common MY mobile length without leading 0
+          return "+60" + s;
+        }
+        return s; // fallback: return cleaned digits (may already be in desired form)
+      }
+
+      // Cooldown (60s) after a successful submission rather than permanent lock
+      const COOLDOWN_MS = 60 * 1000;
+      function applyCooldownState() {
+        const btn = document.querySelector(
+          '#registration-form button[type="submit"]'
+        );
+        const ts = parseInt(
+          localStorage.getItem("registration_submitted_at") || "0",
+          10
+        );
+        if (!btn || !ts) return;
+        const remain = COOLDOWN_MS - (Date.now() - ts);
+        if (remain > 0) {
+          btn.disabled = true;
+          btn.classList.add("opacity-60", "cursor-not-allowed");
+          startCooldownTimer(btn, ts);
+        } else {
+          // Expired cooldown -> clear flags
+          localStorage.removeItem("registration_submitted");
+          localStorage.removeItem("registration_submitted_at");
+        }
+      }
+      function startCooldownTimer(btn, ts) {
+        function tick() {
+          const remain = COOLDOWN_MS - (Date.now() - ts);
+          if (remain <= 0) {
+            btn.disabled = false;
+            btn.textContent = "再次提交报名";
+            btn.classList.remove("opacity-60", "cursor-not-allowed");
+            localStorage.removeItem("registration_submitted");
+            localStorage.removeItem("registration_submitted_at");
+            return;
+          }
+          const sec = Math.ceil(remain / 1000);
+          btn.textContent = `已提交 (${sec}s)`;
+          requestAnimationFrame(tick);
+        }
+        tick();
+      }
+      document.addEventListener("DOMContentLoaded", applyCooldownState);
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const name = form.name.value.trim();
+        const phone = normalizePhoneMY(form.phone.value);
+        const email = form.email.value.trim();
+        const childAge = form.child_age.value.trim();
+        const session = form.session.value;
+        // New fields: where did you hear about us
+        const heardFrom = form.heard_from ? form.heard_from.value : "";
+        const heardFromOther = form.heard_from_other
+          ? form.heard_from_other.value.trim()
+          : "";
+        const heardFromReferral = form.heard_from_referral
+          ? form.heard_from_referral.value.trim()
+          : "";
+        const deemceeBranch = form.deemcee_branch
+          ? form.deemcee_branch.value
+          : "";
+        const state = form.state ? form.state.value : "";
+
+        if (!GAS_ENDPOINT) {
+          alert("提交暂未配置");
+          return false;
+        }
+        // Active cooldown check
+        const submittedAt = parseInt(
+          localStorage.getItem("registration_submitted_at") || "0",
+          10
+        );
+        if (submittedAt && Date.now() - submittedAt < COOLDOWN_MS) {
+          const remain = Math.ceil(
+            (COOLDOWN_MS - (Date.now() - submittedAt)) / 1000
+          );
+          alert(`请等待 ${remain} 秒后再提交。`);
+          applyCooldownState();
+          return false;
+        }
+        const DUP_KEY = `submitted_${phone}_${session}`;
+        if (localStorage.getItem(DUP_KEY) === "1") {
+          alert("该手机号该场次已提交，请勿重复。");
+          return false;
+        }
+
+        const payload = new URLSearchParams();
+        payload.append("name", name);
+        payload.append("phone", phone);
+        payload.append("email", email);
+        payload.append("childAge", childAge);
+        payload.append("session", session);
+        payload.append("referralSource", heardFrom);
+        payload.append("referralOther", heardFromOther);
+        payload.append("referralFriend", heardFromReferral);
+        payload.append("referralDeemcee", deemceeBranch);
+        payload.append("fromState", state);
+        payload.append("submittedAt", new Date().toISOString());
+        payload.append("source", window.location.href);
+        payload.append("userAgent", navigator.userAgent);
+        // Route to specific worksheet tab
+        payload.append("sheet", SHEET_TAB);
+        if (ENDPOINT_SECRET) payload.append("secret", ENDPOINT_SECRET);
+
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "提交中…";
+
+        // First try normal CORS (expect JSON). Apps Script should return JSON {success:true, duplicate:false}
+        fetch(GAS_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
+          body: payload.toString(),
+        })
+          .then(async (res) => {
+            if (!res || res.type === "opaque") throw new Error("CORS");
+            if (!res.ok) throw new Error("服务器错误:" + res.status);
+            let data;
+            try {
+              data = await res.json();
+            } catch {
+              data = null;
+            }
+            if (data && (data.success === false || data.error)) {
+              if (data.duplicate) {
+                localStorage.setItem(DUP_KEY, "1");
+                alert(data.message || "该手机号已报名此场次。");
+                submitBtn.textContent = "已提交";
+                submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+                return;
+              }
+              throw new Error(data.message || "提交失败");
+            }
+            // Success
+            localStorage.setItem("registration_submitted", "1");
+            localStorage.setItem(
+              "registration_submitted_at",
+              Date.now().toString()
+            );
+            localStorage.setItem(DUP_KEY, "1");
+            alert("感谢您的报名！我们会尽快与您联系确认工作坊详情。");
+            // Redirect based on session selection
+            var sessionValue =
+              form.session && form.session.value ? form.session.value : "";
+            if (sessionValue.includes("2025-08-29")) {
+              window.location.href =
+                "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-29-8/";
+            } else if (sessionValue.includes("2025-09-13")) {
+              window.location.href =
+                "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-13-9/";
+            } else if (sessionValue.includes("2025-09-20")) {
+              window.location.href =
+                "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-20-9";
+            } else if (sessionValue.includes("2025-09-26")) {
+              window.location.href =
+                "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-26-9";
+            } else if (sessionValue.includes("2025-10-07")) {
+              window.location.href =
+                "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-7-10";
+            } else {
+              window.location.href =
+                "https://parentsfirst2u.com/4q-mirror-playlab-whatsapp-community";
+            }
+
+            try {
+              if (typeof fbq === "function") fbq("track", "Lead");
+            } catch (_) {}
+            form.reset();
+            submitBtn.textContent = "已提交 (60s)";
+            submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+            startCooldownTimer(submitBtn, Date.now());
+          })
+          .catch((err) => {
+            // Fallback fire-and-forget if CORS blocked
+            if (String(err).includes("CORS")) {
+              fetch(GAS_ENDPOINT, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: payload.toString(),
+              })
+                .then(() => {
+                  localStorage.setItem("registration_submitted", "1");
+                  localStorage.setItem(
+                    "registration_submitted_at",
+                    Date.now().toString()
+                  );
+                  localStorage.setItem(DUP_KEY, "1");
+                  alert("感谢您的报名！");
+                  var sessionValue =
+                    form.session && form.session.value
+                      ? form.session.value
+                      : "";
+                  if (sessionValue.includes("2025-08-29")) {
+                    window.location.href =
+                      "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-29-8/";
+                  } else if (sessionValue.includes("2025-09-13")) {
+                    window.location.href =
+                      "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-13-9/";
+                  } else if (sessionValue.includes("2025-09-20")) {
+                    window.location.href =
+                      "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-20-9";
+                  } else if (sessionValue.includes("2025-09-26")) {
+                    window.location.href =
+                      "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-26-9";
+                  } else if (sessionValue.includes("2025-10-07")) {
+                    window.location.href =
+                      "https://www.parentsfirst2u.com/4q-mirror-playlab-whatsapp-group-7-10";
+                  } else {
+                    window.location.href =
+                      "https://parentsfirst2u.com/4q-mirror-playlab-whatsapp-community";
+                  }
+                  try {
+                    if (typeof fbq === "function") fbq("track", "Lead");
+                  } catch (_) {}
+                  form.reset();
+                  submitBtn.textContent = "已提交 (60s)";
+                  submitBtn.classList.add("opacity-60", "cursor-not-allowed");
+                  startCooldownTimer(submitBtn, Date.now());
+                })
+                .catch(() => {
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = originalText;
+                  alert("提交失败，请稍后再试。");
+                });
+              return;
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            alert(err.message || "提交失败，请稍后再试。");
+          });
+
+        return false;
+      }
+
+      // Init Lucide icons (supports deferred load)
+      function initIcons() {
+        if (window.lucide) window.lucide.createIcons();
+      }
+      window.addEventListener("DOMContentLoaded", initIcons);
+      window.addEventListener("load", initIcons);
+
+      // Show/hide controls for 'heard from' dropdown
+      function initHeardFromControls() {
+        const heard = document.getElementById("heard_from");
+        const otherWrap = document.getElementById("heard_from_other_wrap");
+        const deemceeWrap = document.getElementById("deemcee_branch_wrap");
+        const otherInput = document.getElementById("heard_from_other");
+        if (!heard) return;
+        const referralWrap = document.getElementById(
+          "heard_from_referral_wrap"
+        );
+        const referralInput = document.getElementById("heard_from_referral");
+        function update() {
+          const v = heard.value;
+          if (v === "Others") {
+            otherWrap.classList.remove("hidden");
+          } else {
+            if (otherWrap) otherWrap.classList.add("hidden");
+            if (otherInput) otherInput.value = "";
+          }
+          if (v === "Deemcee") {
+            deemceeWrap.classList.remove("hidden");
+          } else {
+            if (deemceeWrap) deemceeWrap.classList.add("hidden");
+            const db = document.getElementById("deemcee_branch");
+            if (db) db.value = "";
+          }
+          if (v === "Family & Friends") {
+            if (referralWrap) referralWrap.classList.remove("hidden");
+          } else {
+            if (referralWrap) referralWrap.classList.add("hidden");
+            if (referralInput) referralInput.value = "";
+          }
+        }
+        heard.addEventListener("change", update);
+        update();
+      }
+      document.addEventListener("DOMContentLoaded", initHeardFromControls);
+
+      // Reveal-on-scroll using IntersectionObserver
+      (function () {
+        const els = Array.from(document.querySelectorAll(".reveal-up"));
+        if (!("IntersectionObserver" in window) || els.length === 0) {
+          els.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-visible");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+
+      // Lightweight tilt on hover for [data-tilt]
+      (function () {
+        const cards = Array.from(document.querySelectorAll("[data-tilt]"));
+        const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+        cards.forEach((card) => {
+          let rect;
+          const onEnter = () => {
+            rect = card.getBoundingClientRect();
+          };
+          const onMove = (e) => {
+            if (!rect) return;
+            const x = (e.clientX - rect.left) / rect.width; // 0..1
+            const y = (e.clientY - rect.top) / rect.height; // 0..1
+            const rx = clamp((0.5 - y) * 8, -8, 8);
+            const ry = clamp((x - 0.5) * 8, -8, 8);
+            card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+          };
+          const onLeave = () => {
+            card.style.transform = "perspective(800px) rotateX(0) rotateY(0)";
+          };
+          card.addEventListener("mouseenter", onEnter);
+          card.addEventListener("mousemove", onMove);
+          card.addEventListener("mouseleave", onLeave);
+          // Touch support: slight scale on tap
+          card.addEventListener(
+            "touchstart",
+            () => {
+              card.style.transform = "perspective(800px) scale(0.99)";
+            },
+            { passive: true }
+          );
+          card.addEventListener(
+            "touchend",
+            () => {
+              card.style.transform = "perspective(800px)";
+            },
+            { passive: true }
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>
