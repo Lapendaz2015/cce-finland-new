@@ -1,180 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CCE Finland — Reimagine Learning</title>
-  <meta name="description" content="Educational Leadership Study Tour + 13th International Symposium on Creative Education • 3–8 May 2026 • Helsinki & Lahti, Finland" />
-  <meta property="og:title" content="CCE Finland — Reimagine Learning" />
-  <meta property="og:description" content="Join a fully guided, residential learning program in Finland: AI, Creativity & the Future of Education. 3–8 May 2026." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="" />
-  <meta name="theme-color" content="#0e1b25" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Header -->
-  <header id="top">
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1 aria-label="CCE Finland">CCE Finland</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      id="viewport-meta"
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1, maximum-scale=5, user-scalable=yes"
+    />
+    <title>CCE Finland — Reimagine Learning</title>
+    <meta
+      name="description"
+      content="Educational Leadership Study Tour + 13th International Symposium on Creative Education • 3–8 May 2026 • Helsinki & Lahti, Finland"
+    />
+    <meta property="og:title" content="CCE Finland — Reimagine Learning" />
+    <meta
+      property="og:description"
+      content="Join a fully guided, residential learning program in Finland: AI, Creativity & the Future of Education. 3–8 May 2026."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="" />
+    <meta name="theme-color" content="#0e1b25" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Decorative background elements (purely visual) -->
+    <div class="bg-decor" aria-hidden="true">
+      <div class="spiral spiral--1"></div>
+      <div class="spiral spiral--2"></div>
+      <div class="spiral spiral--3"></div>
+    </div>
+    
+    <!-- Header -->
+    <header id="top">
+      <div class="wrap nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <h1 aria-label="CCE Finland">CCE Finland</h1>
+        </div>
+        <nav class="menu" aria-label="Primary">
+          <a class="item" href="#program">Program</a>
+          <a class="item" href="#highlights">Highlights</a>
+          <a class="item" href="#gallery">Gallery</a>
+          <a class="item" href="#details">Details</a>
+          <a class="item" href="#cta">Apply</a>
+        </nav>
+        <button class="hamb" aria-label="Toggle menu" aria-expanded="false">
+          ☰
+        </button>
       </div>
-      <nav class="menu" aria-label="Primary">
-        <a class="item" href="#program">Program</a>
-        <a class="item" href="#highlights">Highlights</a>
-        <a class="item" href="#gallery">Gallery</a>
-        <a class="item" href="#details">Details</a>
-        <a class="item" href="#cta">Apply</a>
-      </nav>
-      <button class="hamb" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    </div>
-    <div class="wrap mobile" role="dialog" aria-modal="false" aria-label="Mobile Menu">
-      <a href="#program">Program</a>
-      <a href="#highlights">Highlights</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#details">Details</a>
-      <a href="#cta">Apply</a>
-    </div>
-  </header>
+      <div
+        class="wrap mobile"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Mobile Menu"
+      >
+        <a href="#program">Program</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#details">Details</a>
+        <a href="#cta">Apply</a>
+      </div>
+    </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">Reimagining Learning • 2026</span>
-      <h2 class="h1">Reimagine Learning in the Home & Classroom—With Finland’s Best</h2>
-      <p class="lede">In 2025, we witnessed the quiet excellence of Finnish education: calm classrooms, purposeful routines, and learning designed with care. Teachers as thoughtful designers, students guided by curiosity, and technology used to give time back to relationships and feedback. When clarity, creativity, and wellbeing meet, learning becomes deeply human—and deeply effective.</p>
-      <div class="hero-cta">
-        <a class="btn" href="#cta">I'm in — Send Info</a>
-        <a class="btn ghost" href="#gallery">See the atmosphere</a>
-      </div>
-      <div class="heroCard reveal" aria-label="Program overview">
-        <div class="copy">
-          <div class="kpis">
-            <span class="chip">3–8 May 2026</span>
-            <span class="chip">Helsinki & Lahti</span>
-            <span class="chip">Guided, Residential</span>
-            <span class="chip">AI × Creativity × Wellbeing</span>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Reimagining Learning • 2026</span>
+        <h2 class="h1">
+          Reimagine Learning in the Home & Classroom—With Finland’s Best
+        </h2>
+        <p class="lede">
+          In 2025, we witnessed the quiet excellence of Finnish education: calm
+          classrooms, purposeful routines, and learning designed with care.
+          Teachers as thoughtful designers, students guided by curiosity, and
+          technology used to give time back to relationships and feedback. When
+          clarity, creativity, and wellbeing meet, learning becomes deeply
+          human—and deeply effective.
+        </p>
+        <div class="hero-cta">
+          <a class="btn" href="#cta">I'm in — Send Info</a>
+          <a class="btn ghost" href="#gallery">See the atmosphere</a>
+        </div>
+        <div class="heroCard reveal" aria-label="Program overview">
+          <div class="copy">
+            <div class="kpis">
+              <span class="chip">3–8 May 2026</span>
+              <span class="chip">Helsinki & Lahti</span>
+              <span class="chip">Guided, Residential</span>
+              <span class="chip">AI × Creativity × Wellbeing</span>
+            </div>
+            <p class="muted" style="margin-top: 10px">
+              We experienced it in 2025—and it changed how we teach, lead, and
+              parent. In 2026, we’re going back and opening spots for more
+              passionate educators and parents to join us. This is not a
+              sit‑and‑listen conference—it’s a fully guided program inside the
+              world’s most trusted education system.
+            </p>
+            <div class="factbar">
+              <div class="fact">
+                <b>6 immersive days</b><br /><span class="muted"
+                  >Leadership workshops, school visits, reflections</span
+                >
+              </div>
+              <div class="fact">
+                <b>Cross‑sector visits</b><br /><span class="muted"
+                  >Early years, vocational, university, nature‑based</span
+                >
+              </div>
+              <div class="fact">
+                <b>Bring it home</b><br /><span class="muted"
+                  >Practical tools for school & family</span
+                >
+              </div>
+            </div>
           </div>
-          <p class="muted" style="margin-top:10px">We experienced it in 2025—and it changed how we teach, lead, and parent. In 2026, we’re going back and opening spots for more passionate educators and parents to join us. This is not a sit‑and‑listen conference—it’s a fully guided program inside the world’s most trusted education system.</p>
+          <figure class="hero-media">
+            <img
+              src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1600&auto=format&fit=crop"
+              alt="Scandinavian library interior with natural light"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program -->
+    <section id="program">
+      <div class="wrap two">
+        <div>
+          <h2>Educational Leadership Study Tour + CCE Finland Symposium</h2>
+          <p class="muted">
+            From <b>3–8 May 2026</b> in <b>Helsinki & Lahti</b>, the 13th
+            International Symposium on Creative Education explores this year’s
+            theme:
+            <i
+              >Reimagining Learning: AI, Creativity, and the Future of
+              Education</i
+            >.
+          </p>
+          <p>
+            No paper presentation required—just deep learning, real
+            conversations, and tools you can bring back to your team and family.
+          </p>
+        </div>
+        <div class="card">
+          <ul class="list">
+            <li>
+              Visit early childhood, vocational, and university
+              settings—including nature‑based learning and phenomenon‑driven
+              classrooms.
+            </li>
+            <li>
+              Explore Oodi Library and innovative hubs that blend creativity,
+              technology, and community.
+            </li>
+            <li>
+              Join leadership workshops, hackathon‑style problem solving, and
+              guided reflections ready to adapt at home or school.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights">
+      <div class="wrap">
+        <h2>Human‑first. Future‑ready.</h2>
+        <p class="muted">
+          If you believe education should be human‑first and future‑ready, come
+          see how AI, creativity, and wellbeing actually work together in
+          practice.
+        </p>
+        <div class="grid-3" style="margin-top: 16px">
+          <div class="card reveal">
+            <b>Design Calm</b><br /><span class="muted"
+              >Clarity, routines, and feedback that free time for
+              relationships.</span
+            >
+          </div>
+          <div class="card reveal">
+            <b>Lead with Inquiry</b><br /><span class="muted"
+              >Curiosity‑driven learning, not content overload.</span
+            >
+          </div>
+          <div class="card reveal">
+            <b>Tools that Serve</b><br /><span class="muted"
+              >Technology that augments teachers and coaches—not replaces
+              them.</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="wrap">
+        <h2>Photo gallery</h2>
+        <p class="muted">
+          A feel for the spaces you’ll be in—light, nature, and community.
+        </p>
+        <div class="gallery" style="margin-top: 16px">
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="0"
+              tabindex="0"
+              data-full="images/gall-1.jpg"
+              alt="Nordic classroom"
+              src="images/gall-1.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="1"
+              tabindex="0"
+              data-full="images/gall-2.jpg"
+              alt="Oodi Library"
+              src="images/gall-2.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="2"
+              tabindex="0"
+              data-full="images/gall-3.jpg"
+              alt="Nature based learning"
+              src="images/gall-3.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="3"
+              tabindex="0"
+              data-full="images/gall-4.jpg"
+              alt="Students in class"
+              src="images/gall-4.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="4"
+              tabindex="0"
+              data-full="images/gall-5.jpg"
+              alt="Hands-on learning"
+              src="images/gall-5.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="5"
+              tabindex="0"
+              data-full="images/gall-6.jpg"
+              alt="Outdoor learning"
+              src="images/gall-6.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="6"
+              tabindex="0"
+              data-full="images/gall-7.jpg"
+              alt="Studio space"
+              src="images/gall-7.jpg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="7"
+              tabindex="0"
+              data-full="images/gall-8.jpeg"
+              alt="Library interior"
+              src="images/gall-8.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="8"
+              tabindex="0"
+              data-full="images/gall-9.jpeg"
+              alt="Group work"
+              src="images/gall-9.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="9"
+              tabindex="0"
+              data-full="images/gall-10.jpeg"
+              alt="Creative project"
+              src="images/gall-10.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="10"
+              tabindex="0"
+              data-full="images/gall-11.jpeg"
+              alt="Finnish classroom"
+              src="images/gall-11.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="11"
+              tabindex="0"
+              data-full="images/gall-12.jpeg"
+              alt="Play-based learning"
+              src="images/gall-12.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="12"
+              tabindex="0"
+              data-full="images/gall-13.jpeg"
+              alt="School courtyard"
+              src="images/gall-13.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="13"
+              tabindex="0"
+              data-full="images/gall-14.jpeg"
+              alt="Design studio"
+              src="images/gall-14.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="14"
+              tabindex="0"
+              data-full="images/gall-15.jpeg"
+              alt="Nature nearby"
+              src="images/gall-15.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="15"
+              tabindex="0"
+              data-full="images/gall-16.jpeg"
+              alt="Student reflection"
+              src="images/gall-16.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="16"
+              tabindex="0"
+              data-full="images/gall-17.jpeg"
+              alt="Workshop"
+              src="images/gall-17.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="17"
+              tabindex="0"
+              data-full="images/gall-18.jpeg"
+              alt="Community"
+              src="images/gall-18.jpeg"
+            />
+          </div>
+          <div class="tile reveal">
+            <img
+              loading="lazy"
+              data-index="18"
+              tabindex="0"
+              data-full="images/gall-19.jpeg"
+              alt="School corridor"
+              src="images/gall-19.jpeg"
+            />
+          </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+          <button class="lb-close" aria-label="Close">×</button>
+          <button class="lb-prev" aria-label="Previous">‹</button>
+          <div class="lb-stage">
+            <div class="lb-spinner" aria-hidden="true"></div>
+            <img class="lb-img" alt="" src="" />
+            <div class="lb-meta">
+              <div class="lb-caption" aria-live="polite"></div>
+              <div class="lb-counter" aria-hidden="true"></div>
+            </div>
+          </div>
+          <button class="lb-next" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details & Audience -->
+    <section id="details">
+      <div class="wrap two">
+        <div>
+          <h2>Dates, Location & Audience</h2>
           <div class="factbar">
-            <div class="fact"><b>6 immersive days</b><br><span class="muted">Leadership workshops, school visits, reflections</span></div>
-            <div class="fact"><b>Cross‑sector visits</b><br><span class="muted">Early years, vocational, university, nature‑based</span></div>
-            <div class="fact"><b>Bring it home</b><br><span class="muted">Practical tools for school & family</span></div>
+            <div class="fact"><b>Dates</b><br />3–8 May 2026</div>
+            <div class="fact">
+              <b>Location</b><br />Helsinki & Lahti, Finland
+            </div>
+            <div class="fact">
+              <b>Audience</b><br />School leaders, teachers, parents, innovators
+            </div>
+          </div>
+          <p style="margin-top: 16px" class="muted">
+            Spaces are intentionally small to preserve depth and reflection.
+          </p>
+        </div>
+        <div class="cta" id="cta">
+          <div>
+            <h3
+              style="
+                margin: 0;
+                font-family: 'Playfair Display', serif;
+                font-size: 28px;
+              "
+            >
+              Ready to come with us?
+            </h3>
+            <p class="muted" style="margin-top: 6px">
+              Reply “I’m in” or leave your email and we’ll send the detailed
+              itinerary, fees, and travel info.
+            </p>
+          </div>
+          <form id="interestForm" novalidate>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="you@example.com"
+              aria-label="Email address"
+              required
+            />
+            <button class="btn" type="submit">I'm in — Send Details</button>
+            <button class="btn ghost" type="button" id="copyPhrase">
+              Copy “I’m in”
+            </button>
+          </form>
+          <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / Notes -->
+    <section>
+      <div class="wrap">
+        <h2>Good to know</h2>
+        <div class="grid-2" style="margin-top: 16px">
+          <div class="card reveal">
+            <b>No papers, just practice</b>
+            <p class="muted">
+              Time goes into observation, studio sessions, and leadership
+              reflections that translate directly to your context.
+            </p>
+          </div>
+          <div class="card reveal">
+            <b>Bring your team—or your family lens</b>
+            <p class="muted">
+              Everything is designed to help you lead a school, a class, or a
+              home with more calm and clarity.
+            </p>
           </div>
         </div>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1600&auto=format&fit=crop" alt="Scandinavian library interior with natural light"/>
-        </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Program -->
-  <section id="program">
-    <div class="wrap two">
-      <div>
-        <h2>Educational Leadership Study Tour + CCE Finland Symposium</h2>
-        <p class="muted">From <b>3–8 May 2026</b> in <b>Helsinki & Lahti</b>, the 13th International Symposium on Creative Education explores this year’s theme: <i>Reimagining Learning: AI, Creativity, and the Future of Education</i>.</p>
-        <p>No paper presentation required—just deep learning, real conversations, and tools you can bring back to your team and family.</p>
-      </div>
-      <div class="card">
-        <ul class="list">
-          <li>Visit early childhood, vocational, and university settings—including nature‑based learning and phenomenon‑driven classrooms.</li>
-          <li>Explore Oodi Library and innovative hubs that blend creativity, technology, and community.</li>
-          <li>Join leadership workshops, hackathon‑style problem solving, and guided reflections ready to adapt at home or school.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Highlights -->
-  <section id="highlights">
-    <div class="wrap">
-      <h2>Human‑first. Future‑ready.</h2>
-      <p class="muted">If you believe education should be human‑first and future‑ready, come see how AI, creativity, and wellbeing actually work together in practice.</p>
-      <div class="grid-3" style="margin-top:16px">
-        <div class="card reveal"><b>Design Calm</b><br><span class="muted">Clarity, routines, and feedback that free time for relationships.</span></div>
-        <div class="card reveal"><b>Lead with Inquiry</b><br><span class="muted">Curiosity‑driven learning, not content overload.</span></div>
-        <div class="card reveal"><b>Tools that Serve</b><br><span class="muted">Technology that augments teachers and coaches—not replaces them.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section id="gallery">
-    <div class="wrap">
-      <h2>Photo gallery</h2>
-      <p class="muted">A feel for the spaces you’ll be in—light, nature, and community.</p>
-      <div class="gallery" style="margin-top:16px">
-        <div class="tile tile--tall reveal"><img alt="Nordic classroom" src="https://images.unsplash.com/photo-1523920290228-4f321a939b4d?q=80&w=1600&auto=format&fit=crop"></div>
-        <div class="tile tile--tall reveal"><img alt="Oodi Library" src="https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1600&auto=format&fit=crop"></div>
-        <div class="tile tile--wide reveal"><img alt="Nature based learning" src="https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?q=80&w=2000&auto=format&fit=crop"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Details & Audience -->
-  <section id="details">
-    <div class="wrap two">
-      <div>
-        <h2>Dates, Location & Audience</h2>
-        <div class="factbar">
-          <div class="fact"><b>Dates</b><br>3–8 May 2026</div>
-          <div class="fact"><b>Location</b><br>Helsinki & Lahti, Finland</div>
-          <div class="fact"><b>Audience</b><br>School leaders, teachers, parents, innovators</div>
+    <!-- Footer -->
+    <footer>
+      <div class="wrap foot">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div style="font-weight: 700">CCE Finland</div>
+            <div class="muted">
+              Reimagining Learning: AI × Creativity × Wellbeing
+            </div>
+          </div>
         </div>
-        <p style="margin-top:16px" class="muted">Spaces are intentionally small to preserve depth and reflection.</p>
+        <div class="muted">© 2026 CCE Finland. All rights reserved.</div>
       </div>
-      <div class="cta" id="cta">
-        <div>
-          <h3 style="margin:0; font-family:'Playfair Display',serif; font-size:28px">Ready to come with us?</h3>
-          <p class="muted" style="margin-top:6px">Reply “I’m in” or leave your email and we’ll send the detailed itinerary, fees, and travel info.</p>
-        </div>
-        <form id="interestForm" novalidate>
-          <input type="email" name="email" id="email" placeholder="you@example.com" aria-label="Email address" required>
-          <button class="btn" type="submit">I'm in — Send Details</button>
-          <button class="btn ghost" type="button" id="copyPhrase">Copy “I’m in”</button>
-        </form>
-        <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- FAQ / Notes -->
-  <section>
-    <div class="wrap">
-      <h2>Good to know</h2>
-      <div class="grid-2" style="margin-top:16px">
-        <div class="card reveal">
-          <b>No papers, just practice</b>
-          <p class="muted">Time goes into observation, studio sessions, and leadership reflections that translate directly to your context.</p>
-        </div>
-        <div class="card reveal">
-          <b>Bring your team—or your family lens</b>
-          <p class="muted">Everything is designed to help you lead a school, a class, or a home with more calm and clarity.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="wrap foot">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-weight:700">CCE Finland</div>
-          <div class="muted">Reimagining Learning: AI × Creativity × Wellbeing</div>
-        </div>
-      </div>
-      <div class="muted">© 2026 CCE Finland. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script src="main.js" defer></script>
-</body>
+    <script src="main.js" defer></script>
+  </body>
 </html>
