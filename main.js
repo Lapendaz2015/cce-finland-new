@@ -28,20 +28,67 @@ function smoothScrollTo(targetY, duration=700){
   requestAnimationFrame(step);
 }
 
-// Anchor links
-const headerOffset = 70;
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    const el = document.querySelector(id);
-    if (el){
-      e.preventDefault();
-      const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      smoothScrollTo(y, 750);
-      header.classList.remove('open');
-      if (hamb) hamb.setAttribute('aria-expanded','false');
-    }
-  });
+// Anchor links (delegated robust handler)
+// Uses event delegation so dynamically-added links still work.
+function getHeaderOffset(){
+  try{ const h = document.querySelector('header'); return (h && h.offsetHeight) || 70; }catch(e){ return 70; }
+}
+
+document.addEventListener('click', (e) => {
+  // find closest anchor element
+  let el = e.target;
+  while (el && el !== document.documentElement) {
+    if (el.tagName && el.tagName.toLowerCase() === 'a' && el.getAttribute('href')) break;
+    el = el.parentNode;
+  }
+  if (!el || !el.getAttribute) return; // no anchor clicked
+  const href = el.getAttribute('href');
+  if (!href || href.indexOf('#') === -1) return; // not a hash link
+
+  // if the link points to another page (has a different pathname/host) let browser handle it
+  try{
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin || url.pathname !== window.location.pathname) return;
+  }catch(err){ /* ignore URL parse errors and continue */ }
+
+  const hash = href.slice(href.indexOf('#')) || '#';
+  // resolve target
+  let target = null;
+  try{ target = document.querySelector(hash); }catch(err){ target = null; }
+  if (!target && hash && hash !== '#') target = document.getElementById(hash.slice(1));
+
+  e.preventDefault();
+  // close mobile menu if open
+  if (header) header.classList.remove('open');
+  if (hamb) hamb.setAttribute('aria-expanded','false');
+
+  if (!target) {
+    // '#' or no target -> scroll to top
+    smoothScrollTo(0, 500);
+    history.replaceState(null, '', (window.location.pathname || '/') + '#');
+    return;
+  }
+
+  const y = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+  smoothScrollTo(y, 700);
+  // update URL hash without jumping
+  try{ history.replaceState(null, '', (window.location.pathname || '/') + hash); }catch(e){}
+  // focus target after scroll
+  setTimeout(()=>{ try{ target.setAttribute('tabindex','-1'); target.focus(); }catch(e){} }, 780);
+});
+
+// On page load, if URL contains a hash, smooth-scroll to it
+window.addEventListener('load', () => {
+  const h = window.location.hash;
+  if (!h) return;
+  let target = null;
+  try{ target = document.querySelector(h); }catch(err){ target = null; }
+  if (!target) target = document.getElementById(h.slice(1));
+  if (target){
+    const y = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+    setTimeout(()=> smoothScrollTo(y, 600), 80);
+    setTimeout(()=>{ try{ target.setAttribute('tabindex','-1'); target.focus(); }catch(e){} }, 700);
+  }
 });
 
 // Reveal on scroll (disabled if reduced motion)
@@ -134,23 +181,82 @@ if (prefersReduced){
   window.addEventListener('mousemove', handler, {passive:true});
 })();
 
-// Simple email form (demo only)
-const form = document.getElementById('interestForm');
+// Lead form submission — posts to Google Apps Script endpoint
 const msg = document.getElementById('formMsg');
-if (form){
-  form.addEventListener('submit', (e)=>{
+const leadForm = document.getElementById('leadForm');
+// TODO: set your deployed Apps Script web app URL here
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby-f1txDVNGmlkSPT3PbCcNy4rBZsVURM8ljCYfLKN1kiz4qxgWuAT_eCepBzFA1k1c/exec';
+// Optional shared secret to validate requests on the GAS side
+const ENDPOINT_SECRET = 'rt#$%2323gghh';
+
+if (leadForm){
+  leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitBtn = leadForm.querySelector('button[type="submit"]');
+    const name = (document.getElementById('name').value || '').trim();
+    const phone = (document.getElementById('phone').value || '').trim();
     const email = (document.getElementById('email').value || '').trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      msg.textContent = 'Please enter a valid email.';
-      msg.style.color = '#b91c1c';
-      return;
-    }
-    // Replace with your real endpoint call
-    msg.textContent = `Thanks! We'll send the itinerary, fees, and travel info to ${email}.`;
-    msg.style.color = 'var(--muted)';
-    form.reset();
+    const people = (document.getElementById('people').value || '').trim();
+
+    if (!name){ return showFormMsg('Please enter your name.', true); }
+    if (!phone){ return showFormMsg('Please enter your phone number.', true); }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ return showFormMsg('Please enter a valid email address.', true); }
+    if (!people || isNaN(Number(people)) || Number(people) < 1){ return showFormMsg('Please enter number of people (1+).', true); }
+
+    if (!GAS_ENDPOINT){ return showFormMsg('Form endpoint not configured. Set GAS_ENDPOINT in main.js', true); }
+
+    submitBtn.disabled = true;
+    showFormMsg('Sending…', false);
+    try{
+      // Use FormData to avoid CORS preflight and keep request "simple"
+      const fd = new FormData();
+      fd.append('name', name);
+      fd.append('phone', phone);
+      fd.append('email', email);
+      fd.append('people', people);
+      fd.append('session', people); // keep compatibility with Sheet mapping
+      fd.append('timestamp', new Date().toISOString());
+      fd.append('secret', ENDPOINT_SECRET);
+
+      let ok = false; let duplicate = false; let firstErr = null;
+      try{
+        const res = await fetch(GAS_ENDPOINT, { method: 'POST', body: fd, redirect: 'follow' });
+        // Try to parse JSON if CORS allows; otherwise fall through to ok by status
+        let data = null;
+        try{ data = await res.clone().json(); }catch(_){ /* opaque or non-JSON */ }
+        if (data && data.success){ ok = true; }
+        else if (data && data.duplicate){ ok = true; duplicate = true; }
+        else if (res.ok){ ok = true; }
+        else { firstErr = data || {message: 'Unknown error'}; }
+      }catch(fetchErr){ firstErr = fetchErr; }
+
+      if (!ok){
+        // Fallback for strict CORS (file:// origin etc.) — fire-and-forget
+        try{
+          await fetch(GAS_ENDPOINT, { method: 'POST', body: fd, mode: 'no-cors' });
+          ok = true;
+        }catch(e2){ firstErr = firstErr || e2; }
+      }
+
+      if (ok){
+        if (duplicate) showFormMsg('We already have your submission. Thank you!', false);
+        else showFormMsg('Thanks — we received your submission. We will be in touch shortly.', false);
+        leadForm.reset();
+      } else {
+        console.error('GAS error', firstErr);
+        showFormMsg('There was an error submitting the form. Please try again later.', true);
+      }
+    }catch(err){
+      console.error(err);
+      showFormMsg('Network error — please try again.', true);
+    }finally{ submitBtn.disabled = false; }
   });
+}
+
+function showFormMsg(text, isError){
+  if (!msg) return;
+  msg.textContent = text;
+  msg.style.color = isError ? '#b91c1c' : 'var(--muted)';
 }
 
 // Copy phrase button

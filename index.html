@@ -31,9 +31,147 @@
   <body>
     <!-- Decorative background elements (purely visual) -->
     <div class="bg-decor" aria-hidden="true">
-      <div class="spiral spiral--1"></div>
-      <div class="spiral spiral--2"></div>
-      <div class="spiral spiral--3"></div>
+      <!-- Subtle floating bubbles (decorative) -->
+      <div
+        class="bubble"
+        style="
+          --size: 14px;
+          --dur: 26s;
+          --drift: -24px;
+          left: 4%;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 22px;
+          --dur: 30s;
+          --drift: 18px;
+          left: 10%;
+          animation-delay: 6s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 12px;
+          --dur: 22s;
+          --drift: -12px;
+          left: 16%;
+          animation-delay: 10s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 28px;
+          --dur: 36s;
+          --drift: 24px;
+          left: 22%;
+          animation-delay: 4s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 18px;
+          --dur: 28s;
+          --drift: -18px;
+          left: 28%;
+          animation-delay: 12s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 16px;
+          --dur: 24s;
+          --drift: 10px;
+          left: 34%;
+          animation-delay: 8s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 26px;
+          --dur: 34s;
+          --drift: -20px;
+          left: 40%;
+          animation-delay: 14s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 12px;
+          --dur: 20s;
+          --drift: 12px;
+          left: 48%;
+          animation-delay: 5s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 24px;
+          --dur: 32s;
+          --drift: -26px;
+          left: 56%;
+          animation-delay: 9s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 14px;
+          --dur: 24s;
+          --drift: 14px;
+          left: 64%;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 20px;
+          --dur: 30s;
+          --drift: -16px;
+          left: 72%;
+          animation-delay: 11s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 18px;
+          --dur: 28s;
+          --drift: 20px;
+          left: 78%;
+          animation-delay: 7s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 30px;
+          --dur: 38s;
+          --drift: -28px;
+          left: 86%;
+          animation-delay: 3s;
+        "
+      ></div>
+      <div
+        class="bubble"
+        style="
+          --size: 12px;
+          --dur: 20s;
+          --drift: 10px;
+          left: 92%;
+          animation-delay: 13s;
+        "
+      ></div>
     </div>
 
     <!-- Header -->
@@ -52,11 +190,14 @@
           <a class="item" href="#details">Details</a>
           <a class="item" href="#cta">Apply</a>
         </nav> -->
-        <button class="hamb" aria-label="Toggle menu" aria-expanded="false">
-          ☰
-        </button>
+        <div class="nav-actions">
+          <a class="btn small join-btn" href="#cta">Join us</a>
+          <button class="hamb" aria-label="Toggle menu" aria-expanded="false">
+            ☰
+          </button>
+        </div>
       </div>
-      <div
+      <!-- <div
         class="wrap mobile"
         role="dialog"
         aria-modal="false"
@@ -67,7 +208,7 @@
         <a href="#gallery">Gallery</a>
         <a href="#details">Details</a>
         <a href="#cta">Apply</a>
-      </div>
+      </div> -->
     </header>
 
     <!-- Hero -->
@@ -124,8 +265,8 @@
           </div>
           <figure class="hero-media">
             <img
-              src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=1600&auto=format&fit=crop"
-              alt="Scandinavian library interior with natural light"
+              src="images/gall-10.jpeg"
+              alt="Creative project in Finnish learning environment"
             />
           </figure>
         </div>
@@ -134,8 +275,8 @@
 
     <!-- Program -->
     <section id="program">
-      <div class="wrap two">
-        <div>
+      <div class="wrap program-grid">
+        <div class="program-copy">
           <h2>Educational Leadership Study Tour + CCE Finland Symposium</h2>
           <p class="muted">
             From <b>3–8 May 2026</b> in <b>Helsinki & Lahti</b>, the 13th
@@ -150,9 +291,8 @@
             No paper presentation required—just deep learning, real
             conversations, and tools you can bring back to your team and family.
           </p>
-        </div>
-        <div class="card">
-          <ul class="list">
+
+          <ul class="program-list">
             <li>
               Visit early childhood, vocational, and university
               settings—including nature‑based learning and phenomenon‑driven
@@ -168,6 +308,10 @@
             </li>
           </ul>
         </div>
+
+        <figure class="program-media">
+          <img src="images/gall-6.jpg" alt="Outdoor learning in Finland" />
+        </figure>
       </div>
     </section>
 
@@ -419,56 +563,137 @@
       </div>
     </section>
 
-    <!-- Details & Audience -->
-    <section id="details">
-      <div class="wrap two">
-        <div>
-          <h2>Dates, Location & Audience</h2>
-          <div class="factbar">
-            <div class="fact"><b>Dates</b><br />3–8 May 2026</div>
-            <div class="fact">
-              <b>Location</b><br />Helsinki & Lahti, Finland
-            </div>
-            <div class="fact">
-              <b>Audience</b><br />School leaders, teachers, parents, innovators
-            </div>
-          </div>
-          <p style="margin-top: 16px" class="muted">
-            Spaces are intentionally small to preserve depth and reflection.
-          </p>
-        </div>
-        <div class="cta" id="cta">
-          <div>
-            <h3
-              style="
-                margin: 0;
-                font-family: 'Playfair Display', serif;
-                font-size: 28px;
-              "
-            >
-              Ready to come with us?
-            </h3>
-            <p class="muted" style="margin-top: 6px">
-              Reply “I’m in” or leave your email and we’ll send the detailed
-              itinerary, fees, and travel info.
+    <!-- Details & Audience (redesigned) -->
+    <section id="details" class="details">
+      <div class="wrap">
+        <div class="">
+          <div class="details-intro">
+            <h2>Dates, Location & Audience</h2>
+            <p class="muted" style="margin-top: 8px">
+              Spaces are intentionally small to preserve depth and reflection.
             </p>
           </div>
-          <form id="interestForm" novalidate>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="you@example.com"
-              aria-label="Email address"
-              required
-            />
-            <button class="btn" type="submit">I'm in — Send Details</button>
-            <button class="btn ghost" type="button" id="copyPhrase">
-              Copy “I’m in”
-            </button>
-          </form>
-          <p id="formMsg" class="muted" role="status" aria-live="polite"></p>
+
+          <div class="details-facts">
+            <div class="fact-pill">
+              <span class="icon" aria-hidden="true">📅</span>
+              <b>Dates</b><span>3–8 May 2026</span>
+            </div>
+            <div class="fact-pill">
+              <span class="icon" aria-hidden="true">📍</span>
+              <b>Location</b><span>Helsinki &amp; Lahti, Finland</span>
+            </div>
+            <div class="fact-pill">
+              <span class="icon" aria-hidden="true">👥</span>
+              <b>Audience</b
+              ><span>School leaders, teachers, parents, innovators</span>
+            </div>
+          </div>
+
+          <div class="details-copy" style="margin-top: 18px">
+            <p>
+              This is a guided, residential learning program—six days of
+              leadership workshops, school visits and studio learning. Expect
+              small cohorts, deep reflection, and practical takeaways you can
+              bring straight back to classrooms and homes.
+            </p>
+
+            <ul class="list details-list" style="margin-top: 14px">
+              <li>
+                <b>Immersive learning</b> — Leadership workshops and school
+                visits
+              </li>
+              <li>
+                <b>Cross-sector</b> — Early years, vocational, university &amp;
+                nature-based
+              </li>
+              <li>
+                <b>Practical tools</b> — Ready-to-use strategies for schools
+                &amp; families
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Apply CTA (separate section for more space) -->
+    <section class="cta-section">
+      <div class="wrap">
+        <aside class="apply-cta" id="cta" aria-labelledby="ctaTitle">
+          <div class="cta-head">
+            <h3 id="ctaTitle">Ready to come with us?</h3>
+            <p class="muted" style="margin-top: 6px">
+              Reply “I’m in” or leave your details and we’ll send the itinerary,
+              fees and travel info.
+            </p>
+          </div>
+
+          <!-- preserve the original form ids and inputs for JS wiring -->
+          <form id="leadForm" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span class="label">Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Full name"
+                  required
+                />
+              </label>
+
+              <label class="field">
+                <span class="label">Phone number</span>
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  placeholder="e.g. +6012 345 6789"
+                  required
+                />
+              </label>
+
+              <label class="field">
+                <span class="label">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </label>
+
+              <label class="field">
+                <span class="label">How many people going</span>
+                <input
+                  type="number"
+                  name="people"
+                  id="people"
+                  min="1"
+                  value="1"
+                  required
+                />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn" type="submit">Send info</button>
+              <!-- <button class="btn ghost" type="button" id="copyPhrase">
+                Copy “I’m in”
+              </button> -->
+            </div>
+          </form>
+
+          <p
+            id="formMsg"
+            class="muted"
+            role="status"
+            aria-live="polite"
+            style="margin-top: 12px"
+          ></p>
+        </aside>
       </div>
     </section>
 
