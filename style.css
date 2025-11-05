@@ -51,11 +51,13 @@ body{
   font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   line-height:1.6; letter-spacing:.01em; text-rendering:optimizeLegibility;
 }
+/* User requested: remove all body background and clear overlays */
+/* Override previous background layers so the page is visually clear */
+body{ background: none !important; }
+body::before, body:before, body::after, body:after { display: none !important; }
 /* subtle paper grain overlay inspired by grafinity */
 body:before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
-  background: url('images/bg-texture.svg') center/cover no-repeat fixed;
-  opacity:0.88;
 }
 
 /* extra gentle color washes to add depth */
@@ -130,7 +132,12 @@ a:hover{opacity:.9}
 header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(12px); background:rgba(245,242,237,.72); border-bottom:1px solid var(--line)}
 .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
 .brand{display:flex; align-items:center; gap:12px}
-.logo{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:inset 0 0 0 1px rgba(255,255,255,.6)}
+.logo{width:56px; height:56px; border-radius:8px; background:none; display:flex; align-items:center; justify-content:center}
+.logo img{width:100%; height:100%; object-fit:contain; display:block}
+
+/* slightly smaller logo in footer to fit layout */
+.foot .logo{width:48px; height:48px}
+.foot .logo img{width:100%; height:100%; object-fit:contain}
 .brand h1{font-family:"Playfair Display", serif; font-size:18px; letter-spacing:.4px; margin:0}
 .menu{display:flex; align-items:center; gap:8px}
 .nav a.item{padding:10px 14px; border-radius:10px}
@@ -213,11 +220,10 @@ p{margin:0 0 16px}
   text-shadow:0 8px 24px rgba(24,46,48,0.06);
 }
 .h1-word{display:inline-block; opacity:0; transform:translateY(18px); will-change:transform,opacity;
-  /* fallback color for browsers that don't support background-clip:text */
-  color:var(--ink);
-  background:linear-gradient(90deg, var(--brand-teal), var(--brand-pink) 35%, var(--brand-yellow));
-  background-size:320% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-  animation:gradMove 6s linear infinite;
+  /* use a single, muted color instead of the animated rainbow gradient */
+  color:var(--accent-dark);
+  background:none; -webkit-background-clip:initial; background-clip:initial; -webkit-text-fill-color:initial;
+  /* keep entrance animation but remove continuous color animation */
 }
 .h1-animate .h1-word{animation:fadeUp var(--anim-med) var(--ease) both;}
 .h1-animate .h1-word:nth-child(1){animation-delay:40ms}
@@ -227,7 +233,7 @@ p{margin:0 0 16px}
 .h1-animate .h1-word:nth-child(5){animation-delay:200ms}
 .h1-animate .h1-word:nth-child(6){animation-delay:240ms}
 .h1-animate .h1-word:nth-child(7){animation-delay:280ms}
-@keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+/* removed colorful gradient animation for headings to reduce visual noise */
 
 /* chip shimmer */
 .chip{position:relative; overflow:hidden}
@@ -341,3 +347,11 @@ footer{padding:50px 0; color:var(--muted)}
 .tile:focus-visible{outline:3px solid rgba(32,189,198,0.12); outline-offset:4px}
 .btn:focus-visible{box-shadow:0 6px 20px rgba(32,189,198,0.12);}
 .menu a:focus-visible{outline:2px dashed rgba(24,46,48,0.12); outline-offset:3px}
+
+/* Final override: neutral solid background with a very subtle texture and gradient */
+html, body { background: var(--surface) !important; }
+body { background-image: linear-gradient(180deg, rgba(255,255,255,0.99) 0%, rgba(250,250,250,1) 100%) !important; background-repeat:no-repeat !important; }
+/* very low-opacity paper texture to add depth without color */
+body::before{ content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; background: url('images/bg-texture.svg') center/cover no-repeat fixed !important; opacity:0.04 !important; display:block !important; }
+/* subtle top gradient for depth */
+body::after{ content:""; position:fixed; inset:0; pointer-events:none; z-index:-2; mix-blend-mode:normal; background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0) 36%) !important; transition:opacity .45s ease, transform 1.2s ease; will-change:transform, opacity; transform:translate3d(var(--bg-offset-x,0), var(--bg-offset-y,0), 0); display:block !important; }
