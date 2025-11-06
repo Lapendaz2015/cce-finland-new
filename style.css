@@ -237,14 +237,19 @@ p{margin:0 0 16px}
 .h1::after{content:""; display:block; width:96px; height:4px; border-radius:4px; margin-top:12px; background:linear-gradient(90deg, var(--accent), var(--accent-3));}
 .h1-word{display:inline-block; opacity:0; transform:translateY(18px); will-change:transform,opacity;}
 
-/* Elegant gradient text (with fallback to solid color) */
+/* Elegant gradient text: apply ONLY to the highlighted span */
 @supports (-webkit-background-clip:text) or (background-clip:text){
-  .h1{
-    /* Smooth site-tone gradient from teal → yellow across the full title */
+  /* Default: keep heading as solid text */
+  .h1{ color:#476c6d; background:none }
+  /* Gradient only on the marked phrase */
+  .h1 .h1-gradient{
     background:linear-gradient(90deg, var(--accent-dark) 0%, var(--accent) 55%, var(--accent-3) 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
   }
-  .h1-word{background:inherit; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  /* By default, words stay solid (JS may split into .h1-word) */
+  .h1 .h1-word{ background:none; -webkit-background-clip:initial; background-clip:initial; -webkit-text-fill-color:initial }
+  /* If words are inside the gradient span, inherit the gradient clip */
+  .h1 .h1-gradient .h1-word{ background:inherit; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent }
 }
 .h1-animate .h1-word{animation:fadeUp var(--anim-med) var(--ease) both;}
 .h1-animate .h1-word:nth-child(1){animation-delay:40ms}

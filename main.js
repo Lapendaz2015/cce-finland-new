@@ -143,11 +143,46 @@ if (prefersReduced){
   // Detect touch — skip mousemove parallax on touch devices
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-  // Hero entrance: split heading words into spans and stagger
+  // Hero entrance: split heading words into spans while preserving inner markup (e.g., .h1-gradient)
   const h = document.querySelector('.h1');
   if (h){
-    const words = h.textContent.trim().split(/\s+/);
-    h.innerHTML = words.map((w, i) => `<span class="h1-word" style="--i:${i}">${w}&nbsp;</span>`).join('');
+    let index = 0;
+    const nbsp = document.createTextNode('\u00A0');
+    function wrapTextNode(text){
+      const parts = text.nodeValue.trim().length ? text.nodeValue.split(/(\s+)/) : [text.nodeValue];
+      const frag = document.createDocumentFragment();
+      for (const part of parts){
+        if (part === ' ') { frag.appendChild(document.createTextNode(' ')); continue; }
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); continue; }
+        const span = document.createElement('span');
+        span.className = 'h1-word';
+        span.style.setProperty('--i', String(index++));
+        span.textContent = part;
+        frag.appendChild(span);
+      }
+      return frag;
+    }
+    function clonePreserve(node){
+      if (node.nodeType === Node.TEXT_NODE){
+        return wrapTextNode(node);
+      }
+      if (node.nodeType === Node.ELEMENT_NODE){
+        const clone = node.cloneNode(false); // shallow clone to preserve attributes/classes
+        const children = Array.from(node.childNodes);
+        for (const child of children){
+          const childClone = clonePreserve(child);
+          clone.appendChild(childClone);
+        }
+        return clone;
+      }
+      // other nodes (comments etc.)
+      return document.createTextNode('');
+    }
+    const originalChildren = Array.from(h.childNodes);
+    const newFrag = document.createDocumentFragment();
+    for (const child of originalChildren){ newFrag.appendChild(clonePreserve(child)); }
+    h.innerHTML = '';
+    h.appendChild(newFrag);
     // trigger animation slightly after load
     requestAnimationFrame(()=> setTimeout(()=> h.classList.add('h1-animate'), 120));
   }
@@ -276,10 +311,11 @@ if (copyBtn){
 
 /* Zoom toggle removed — viewport controlled by meta tag */
 
-/* Gallery lightbox */
+/* Site-wide lightbox (all images clickable) */
 (() => {
-  const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
-  if (!galleryImgs.length) return;
+  // collect all images except the lightbox's own display image
+  const pageImages = Array.from(document.querySelectorAll('img:not(.lb-img)'));
+  if (!pageImages.length) return;
 
   const lightbox = document.getElementById('lightbox');
   const lbImg = lightbox && lightbox.querySelector('.lb-img');
@@ -293,9 +329,9 @@ if (copyBtn){
   let lastActive = null;
 
   function openLightbox(idx){
-    idx = Math.max(0, Math.min(galleryImgs.length - 1, idx));
+    idx = Math.max(0, Math.min(pageImages.length - 1, idx));
     current = idx;
-    const thumb = galleryImgs[current];
+    const thumb = pageImages[current];
     if (!thumb) return;
 
     // save focus to restore later
@@ -316,7 +352,7 @@ if (copyBtn){
       lbImg.src = imgLoader.src;
       lbImg.alt = thumb.alt || '';
       const counter = lightbox.querySelector('.lb-counter');
-      if (counter) counter.textContent = `${current + 1} of ${galleryImgs.length}`;
+      if (counter) counter.textContent = `${current + 1} of ${pageImages.length}`;
       // move focus into the lightbox (close button)
       const focusable = getFocusable(lightbox);
       if (focusable.length) focusable[0].focus();
@@ -327,7 +363,7 @@ if (copyBtn){
       // fallback to thumb
       lbImg.src = thumb.src;
       lbImg.alt = thumb.alt || '';
-      lbCaption.textContent = thumb.alt || '';
+      if (lbCaption) lbCaption.textContent = thumb.alt || '';
       if (lbSpinner) lbSpinner.classList.remove('visible');
       lightbox.removeAttribute('aria-busy');
     };
@@ -347,8 +383,8 @@ if (copyBtn){
   }
 
   function showNext(delta){
-    current = (current + delta + galleryImgs.length) % galleryImgs.length;
-    const thumb = galleryImgs[current];
+    current = (current + delta + pageImages.length) % pageImages.length;
+    const thumb = pageImages[current];
     const full = (thumb && (thumb.dataset.full || thumb.src)) || '';
     lbImg.src = '';
     const imgLoader = new Image();
@@ -356,7 +392,7 @@ if (copyBtn){
       lbImg.src = imgLoader.src;
       lbImg.alt = thumb.alt || '';
       const counter = lightbox.querySelector('.lb-counter');
-      if (counter) counter.textContent = `${current + 1} of ${galleryImgs.length}`;
+      if (counter) counter.textContent = `${current + 1} of ${pageImages.length}`;
       if (lbSpinner) lbSpinner.classList.remove('visible');
       lightbox.removeAttribute('aria-busy');
     };
@@ -382,9 +418,12 @@ if (copyBtn){
     if (focusable.length) focusable[0].focus();
   }
 
-  // click handlers for thumbnails
-  galleryImgs.forEach((img, i) => {
+  // click/keyboard handlers for all images
+  pageImages.forEach((img, i) => {
+    // don’t attach to images inside the lightbox itself
+    if (img.closest('#lightbox')) return;
     img.style.cursor = 'zoom-in';
+    if (!img.hasAttribute('tabindex')) img.setAttribute('tabindex', '0');
     img.addEventListener('click', () => openLightbox(i));
     img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(i); });
   });
