@@ -327,6 +327,30 @@ section#program .list li{border-radius:12px}
 /* Overview section as soft panel (to match Program/Details) */
 section#overview > .wrap{background:linear-gradient(180deg,#ffffff,#fbfbfb); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-soft); padding:26px}
 
+/* Itinerary */
+section#itinerary > .wrap{background:linear-gradient(180deg,#ffffff,#fbfbfb); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-soft); padding:26px}
+#itinerary h2::after{width:120px; height:4px}
+.itinerary-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:14px}
+.day-card{background:linear-gradient(180deg,#ffffff,#fbfbfb); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:var(--shadow-soft)}
+.day-card.accent{background:linear-gradient(180deg, rgba(120,170,230,0.14), rgba(255,255,255,0.9)); border-color:rgba(120,170,230,0.28)}
+.day-head{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:8px}
+.day-card h3{margin:6px 0 8px; font-size:20px; color:var(--accent-dark)}
+.schedule{margin:0; padding-left:18px; list-style:disc; color:var(--muted)}
+.schedule li{margin:4px 0}
+@media (max-width:960px){
+  .itinerary-grid{grid-template-columns:1fr}
+}
+
+/* Inclusions checklist */
+.day-card.inclusions{background:linear-gradient(180deg,#ffffff,#fbfbfb); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:var(--shadow-soft)}
+.day-card.inclusions h3{margin:4px 0 12px; font-size:22px; color:var(--accent-dark)}
+.checklist{margin:0; padding-left:0; list-style:none; columns:2; column-gap:24px}
+.checklist li{position:relative; padding:6px 8px 6px 32px; margin:2px 0; background:#fff; border:1px solid var(--line); border-radius:12px; font-size:14px; color:var(--muted); break-inside:avoid; box-shadow:0 6px 18px rgba(2,8,23,.02)}
+.checklist li:before{content:"✓"; position:absolute; left:10px; top:50%; transform:translateY(-50%); width:18px; height:18px; display:flex; align-items:center; justify-content:center; font-size:11px; border-radius:50%; background:linear-gradient(90deg, var(--accent), var(--accent-3)); color:#08212a; border:1px solid rgba(0,0,0,0.04)}
+@media (max-width:960px){
+  .checklist{columns:1}
+}
+
 /* Redesigned program layout */
 .program-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:34px; align-items:center}
 .program-media{border-radius:16px; overflow:hidden; box-shadow:var(--shadow-soft)}
@@ -486,18 +510,6 @@ footer{padding:60px 0; color:var(--muted); background:linear-gradient(180deg,#f9
 
   /* ensure wrap padding doesn't cause horizontal scroll */
   .wrap{padding:0 16px}
-
-  /* Enlarge specific images on mobile */
-  /* gall-1: hero images bigger/wider */
-  .hero-intro .hero-media img[src*="gall-1"],
-  .heroCard .hero-media img[src*="gall-1"]{
-    max-height: 380px;
-  }
-  /* gall-6: program image taller on mobile */
-  .program-media:has(img[src*="gall-6"]) { max-height: 400px; }
-  .program-media:has(img[src*="gall-6"]) img { max-height: 400px; }
-  /* gall-11: gallery tile spans the full row (2 columns) */
-  .gallery .tile:has(img[src*="gall-11"]) { grid-column: span 2; }
 }
 
 /* Respect reduced motion preference: disable non-essential animations */
@@ -517,3 +529,20 @@ footer{padding:60px 0; color:var(--muted); background:linear-gradient(180deg,#f9
 #highlights .card{position:relative}
 #highlights .card b{position:relative; padding-left:22px}
 #highlights .card b::before{content:""; position:absolute; left:0; top:2px; width:12px; height:12px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--accent-3), var(--accent))}
+
+/* FAQ styles */
+section#faq > .wrap{background:linear-gradient(180deg,#ffffff,#fbfbfb); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-soft); padding:26px}
+#faq h2::after{width:92px; height:4px}
+.accordion{display:grid; gap:10px; margin-top:16px}
+.faq-item{background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-soft); overflow:hidden}
+.faq-q{width:100%; text-align:left; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:16px 18px; background:#fff; border:0; cursor:pointer; font-family:inherit; font-size:16px; color:var(--ink)}
+.faq-q:hover{background:#fbfbfb}
+.faq-q .caret{width:28px; height:28px; border-radius:50%; background:linear-gradient(180deg, var(--accent), var(--accent-3)); box-shadow:0 4px 10px rgba(2,8,23,.08); display:inline-grid; place-items:center; flex-shrink:0; transition:transform .2s var(--ease)}
+.faq-q .caret:before{content:""; width:10px; height:10px; border-right:2px solid #08212a; border-bottom:2px solid #08212a; transform:rotate(-45deg)}
+.faq-q[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.faq-a{padding:0 18px 16px 18px; color:var(--muted); font-size:15px; line-height:1.7}
+.faq-a p{margin:10px 0 0}
+@media (prefers-reduced-motion: no-preference){
+  .faq-a[hidden]{display:block; height:0; padding-top:0; padding-bottom:0; overflow:hidden; opacity:0}
+  .faq-a{transition:height .28s var(--ease), opacity .28s var(--ease), padding .28s var(--ease)}
+}

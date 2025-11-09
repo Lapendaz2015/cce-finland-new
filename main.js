@@ -460,3 +460,63 @@ if (copyBtn){
     }
   });
 })();
+
+/* FAQ accordion: toggle expand/collapse with ARIA + smooth animation */
+(() => {
+  const items = Array.from(document.querySelectorAll('#faq .faq-item'));
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const panel = item.querySelector('.faq-a');
+    if (!btn || !panel) return;
+
+    const animate = (open) => {
+      // Respect reduced motion
+      const prefersNoMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersNoMotion) {
+        panel.hidden = !open;
+        btn.setAttribute('aria-expanded', String(open));
+        return;
+      }
+      if (open) {
+        panel.hidden = false;
+        const start = panel.scrollHeight;
+        panel.style.height = '0px';
+        requestAnimationFrame(() => {
+          panel.style.height = start + 'px';
+          panel.style.opacity = '1';
+          panel.style.paddingTop = '';
+          panel.style.paddingBottom = '';
+        });
+        panel.addEventListener('transitionend', function te(){
+          panel.style.height = '';
+          panel.removeEventListener('transitionend', te);
+        });
+      } else {
+        const start = panel.scrollHeight;
+        panel.style.height = start + 'px';
+        requestAnimationFrame(() => {
+          panel.style.height = '0px';
+          panel.style.opacity = '0';
+          panel.style.paddingTop = '0px';
+          panel.style.paddingBottom = '0px';
+        });
+        panel.addEventListener('transitionend', function te(){
+          panel.hidden = true;
+          panel.style.height = '';
+          panel.style.opacity = '';
+          panel.style.paddingTop = '';
+          panel.style.paddingBottom = '';
+          panel.removeEventListener('transitionend', te);
+        });
+      }
+      btn.setAttribute('aria-expanded', String(open));
+    };
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      animate(!isOpen);
+    });
+  });
+})();
